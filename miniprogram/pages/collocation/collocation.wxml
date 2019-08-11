@@ -2,34 +2,6 @@
 <!-- 3-5 3-6搭配间 -->
 
 <!-- 搭配间不为空 -->
-<!-- <view wx:if="{{cartItmes.length > 0}}" class="coll_show">
-  <view wx:for="{{cartItmes}}" wx:key="item" class="coll_li">
-    <view class="coll_left" bindtap="onClickSel" data-id="{{item._id}}">
-      <image src="{{item.img}}" mode="widthFix"></image>
-      <view class="coll_true {{isAll?'sel':''}}"></view>
-    </view>
-    <view class="coll_rcon">
-      <view class="coll_txt">{{item.title}}</view>
-      <view class="coll_delete" bindtap="onClickDelete" data-id="{{item._id}}">删除</view>
-    </view>
-  </view>
-</view> -->
-
-<!-- <view wx:if="{{cartItmes.length > 0}}" class="coll_show">
-  <checkbox-group bindchange="checkboxChange">
-    <label class="checkbox" wx:for="{{cartItmes}}" wx:key="item" class="coll_li">
-        <view class="coll_left">
-          <image src="{{item.img}}" mode="widthFix"></image>
-          <checkbox class="coll_true" value="{{item._id}}" checked="{{item.checked}}"/>
-        </view>
-        <view class="coll_rcon">
-          <view class="coll_txt">{{item.title}}</view>
-          <view class="coll_delete" bindtap="onClickDelete" data-id="{{item._id}}">删除</view>
-        </view>
-    </label>
-  </checkbox-group>
-</view> -->
-
 <view wx:if="{{cartItmes.length > 0}}" class="coll_show">
   <checkbox-group bindchange="checkboxChange">
     <view wx:for="{{cartItmes}}" wx:key="item" class="coll_li">

@@ -2,7 +2,7 @@
 <!-- 1-1搜索 2-1分类 -->
 <!-- 分类 -->
 <view class="search">
-  <navigator hover-class="none" url="../../pages/search/search">
+  <navigator hover-class="none" url="../../pages/search/search?type=goods">
     搜索商品
     <image src="../../images/icon/sea.png"></image>  
   </navigator>

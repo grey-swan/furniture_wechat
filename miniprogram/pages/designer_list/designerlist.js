@@ -14,7 +14,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getDesignerList()
+    var filter = { title: options.title }
+    this.getDesignerList(filter)
   },
 
   /**
@@ -68,13 +69,14 @@ Page({
   /**
    * 获取设计师列表
    */
-  getDesignerList() {
+  getDesignerList(filter) {
     wx.cloud.callFunction({
       name: 'databaseOper',
       data: {
         collection: 'designer',
         type: 'get',
-        page: this.data.page
+        page: this.data.page,
+        where: filter
       }
     }).then(res => {
       const result = res.result

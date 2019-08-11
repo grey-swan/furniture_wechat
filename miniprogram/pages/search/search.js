@@ -82,7 +82,7 @@ Page({
       })
     } else if (this.data.type == 'designer') {
       wx.navigateTo({
-        url: '/pages/designer_list/designerlist?name=like__' + this.data.searchText,
+        url: '/pages/designer_list/designerlist?title=like__' + this.data.searchText,
       })
     } else if (this.data.type == 'case') {
       wx.navigateTo({
