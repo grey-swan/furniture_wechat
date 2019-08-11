@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/goods_list/goodslist",    
-    "pages/index/index",      
+    "pages/index/index",    
+    "pages/goods_list/goodslist",       
     "pages/designer_dea/designer_dea",    
     "pages/designer_list/designerlist",    
     "pages/experience/experience",      
