@@ -1,0 +1,4 @@
+/* pages/collocation/collocation.wxss */
+page{
+  background: #e6e6e6;
+}

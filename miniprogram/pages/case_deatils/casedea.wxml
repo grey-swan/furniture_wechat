@@ -1,0 +1,39 @@
+<!--pages/case_deatils/casedea.wxml-->
+
+<view class="casedea_tit">{{itemDetail.title}}</view>
+<view class="casedea_inf">
+  <text>楼盘：{{itemDetail.building}}</text>
+  <text> 面积：{{itemDetail.area}}</text>
+  <text>  风格：{{itemDetail.styleTitle}}</text>
+</view> 
+<view class="casedea_con">
+<!-- 最小高度500可以删掉 -->
+  <view class="edit min_height500">
+    <rich-text nodes="{{itemDetail.content}}"></rich-text>
+  </view>
+</view>
+<view class="casedea_btn" bindtap="onClickPopOpen">我想这样搭</view>
+
+<!-- 免费全屋软装搭配 弹窗 -->
+<view class="coll_pop {{isPop?'collsel':''}}">
+  <view class="collpop_bg" bindtap="onClickPopClose"></view>
+  <view class="collpop_con">
+    <view class="collpop_tit">免费全屋软装搭配</view>
+    <view class="collpop_close" bindtap="onClickPopClose"><image src="../../images/icon/close.png"></image></view>
+    <view class="collpop_form">
+      <view class="collpop_innput">
+        <view class="collpop_lt"><text>*</text>姓名</view>
+        <input type="text" value="{{commitData.name}}" bindinput="inputChange" data-item="name" placeholder="请输入您的姓名"></input>
+      </view>
+      <view class="collpop_innput">
+        <view class="collpop_lt"><text>*</text>电话</view>
+        <input type="number" value="{{commitData.phone}}" bindinput="inputChange" data-item="phone" placeholder="请输入您的电话"></input>
+      </view>
+      <view class="collpop_innput">
+        <view class="collpop_lt">小区</view>
+        <input type="text" value="{{commitData.address}}" bindinput="inputChange" data-item="address" placeholder="请填写您居住的小区"></input>
+      </view>
+      <button class="collpop_btn" bindtap="onClickCommit">提交</button>        
+    </view> 
+  </view>
+</view>

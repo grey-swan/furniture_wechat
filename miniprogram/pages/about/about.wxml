@@ -1,0 +1,8 @@
+<!--pages/colldea/colldea.wxml-->
+<view class="colldea_tit">公司介绍</view>
+<view class="casedea_con">
+<!-- 最小高度500可以删掉 -->
+  <view class="edit min_height500">
+    <rich-text nodes="{{itemDetail.content}}"></rich-text>
+  </view>
+</view>

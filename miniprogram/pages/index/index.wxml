@@ -1,0 +1,110 @@
+<!--index.wxml-->
+<!-- 搜索 -->
+<view class="search">
+  <navigator hover-class="none" url="../../pages/search/search?type=goods">
+    搜索商品
+    <image src="../../images/icon/sea.png"></image>  
+  </navigator>
+</view>
+<!-- 轮播1 -->
+<view class='banner' style="height:{{height}}px">
+  <swiper autoplay="true" circular="true" current="{{currentSwiper}}" bindchange="swiperChange" >
+    <block wx:for="{{bannerData1}}" wx:key="item">
+      <swiper-item>
+        <navigator wx:if="{{item.type == 0}}" hover-class="none" url="../prodea/prodea?_id={{item.product_id}}">
+          <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
+        </navigator>
+        <navigator wx:elif="{{item.type == 1}}" hover-class="none" url="../case_deatils/casedea?_id={{item.product_id}}">
+          <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
+        </navigator>
+        <navigator wx:elif="{{item.type == 2}}" hover-class="none" url="../designer_dea/designer_dea?_id={{item.product_id}}">
+          <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="dots">
+    <block wx:for="{{bannerData1}}" wx:key>
+      <view class="dot{{index == currentSwiper ? ' active' : ''}}"></view>
+    </block>
+  </view>
+</view>
+<!-- 轮播2 -->
+<view class='banner2' style="height:{{height2}}px">
+  <swiper autoplay="true" circular="true" current="{{currentSwiper2}}" bindchange="swiperChange2" >
+    <block wx:for="{{bannerData2}}" wx:key>
+      <swiper-item>
+        <navigator wx:if="{{item.type == 0}}" hover-class="none" url="../prodea/prodea?_id={{item.product_id}}">
+          <image lazy-load="true" bindload="setConHeight2" mode="widthFix" src='{{item.cover}}'></image>
+        </navigator>
+        <navigator wx:elif="{{item.type == 1}}" hover-class="none" url="../case_deatils/casedea?_id={{item.product_id}}">
+          <image lazy-load="true" bindload="setConHeight2" mode="widthFix" src='{{item.cover}}'></image>
+        </navigator>
+        <navigator wx:elif="{{item.type == 2}}" hover-class="none" url="../designer_dea/designer_dea?_id={{item.product_id}}">
+          <image lazy-load="true" bindload="setConHeight2" mode="widthFix" src='{{item.cover}}'></image>
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="dots">
+    <block wx:for="{{bannerData2}}" wx:key="{{index}}">
+      <view class="dot{{index == currentSwiper2 ? ' active' : ''}}"></view>
+    </block>
+  </view>
+</view>
+<!--软件服务优势  -->
+<view class="inx_serive">
+  <navigator hover-class="none" url="../colldea/colldea">
+    <image lazy-load="true" mode="widthFix" src="https://qiniu.laway.cn/d02e6268bbe411e98b7ac4b301cc20dd"></image>
+  </navigator>
+</view>
+<!-- 金牌设计师 -->
+<view class="inx_designer">
+  <navigator class="inxdes_top"  hover-class="none">
+    <text class="inxdea_t1">匠心设计</text>
+    <text class="inxdea_t2">金牌设计师</text>
+    <image class="inxdea_lx" src="../../images/icon/lx.png"></image>
+  </navigator>
+  <view class="inxdes_con">
+    <swiper  autoplay="true" circular="true" current="{{currentSwiper3}}" bindchange="swiperChange3">
+      <swiper-item wx:for="{{desData}}" wx:for-item="desItem" wx:key="{{index}}">
+        <view class="inxdes_show">
+          <navigator class="inxdes_sa" hover-class="none" url="../designer_dea/designer_dea?_id={{item._id}}"
+            wx:for="{{desItem.deslist}}" wx:key="{{index}}">
+              <image mode="widthFix" src="{{item.avatar}}"></image>
+              <text class="inxdes_name">{{item.name}}</text>
+              <text class="inxdes_bq">{{item.position}}</text>
+          </navigator>                             
+        </view>
+      </swiper-item>
+   </swiper>
+    <view class="dots2">
+      <block wx:for="{{desData}}" wx:key="{{index}}">
+        <view class="dot2{{index == currentSwiper3 ? ' active2' : ''}}"></view>
+      </block>
+    </view>     
+  </view> 
+  <!-- 图片列表 -->
+  <view class="index_list">
+    <navigator hover-class="none" url="../case_list/case_list">
+      <image mode="widthFix" src="https://qiniu.laway.cn/af87b190bbe411e98b7ac4b301cc20dd"></image>
+    </navigator>
+  </view>
+  <view class="index_list">
+    <navigator hover-class="none" url="../about/about">
+      <image mode="widthFix" src="../../images/icon/mapimg.jpg"></image>
+    </navigator>
+  </view>
+  <view class="h30"></view>
+</view>
+
+<!-- 获取信息弹窗 -->
+<view wx:if="{{!hasUserInfo}}" class="getinfo_pop">
+  <view class="getinfo_bg"></view>
+  <view class="getinfo_con">
+    <view class="getinfo_tit">登录并授权</view>
+    <view class="getinfo_t2">申请获取以下权限</view>
+    <view class="getinfo_t3">获得你的公开信息(昵称，头像等)</view>
+    <button class="getinfo_btm" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">允许</button>
+  </view>
+</view>

@@ -1,0 +1,87 @@
+<!--pages/collocation/collocation.wxml-->
+<!-- 3-5 3-6搭配间 -->
+
+<!-- 搭配间不为空 -->
+<!-- <view wx:if="{{cartItmes.length > 0}}" class="coll_show">
+  <view wx:for="{{cartItmes}}" wx:key="item" class="coll_li">
+    <view class="coll_left" bindtap="onClickSel" data-id="{{item._id}}">
+      <image src="{{item.img}}" mode="widthFix"></image>
+      <view class="coll_true {{isAll?'sel':''}}"></view>
+    </view>
+    <view class="coll_rcon">
+      <view class="coll_txt">{{item.title}}</view>
+      <view class="coll_delete" bindtap="onClickDelete" data-id="{{item._id}}">删除</view>
+    </view>
+  </view>
+</view> -->
+
+<!-- <view wx:if="{{cartItmes.length > 0}}" class="coll_show">
+  <checkbox-group bindchange="checkboxChange">
+    <label class="checkbox" wx:for="{{cartItmes}}" wx:key="item" class="coll_li">
+        <view class="coll_left">
+          <image src="{{item.img}}" mode="widthFix"></image>
+          <checkbox class="coll_true" value="{{item._id}}" checked="{{item.checked}}"/>
+        </view>
+        <view class="coll_rcon">
+          <view class="coll_txt">{{item.title}}</view>
+          <view class="coll_delete" bindtap="onClickDelete" data-id="{{item._id}}">删除</view>
+        </view>
+    </label>
+  </checkbox-group>
+</view> -->
+
+<view wx:if="{{cartItmes.length > 0}}" class="coll_show">
+  <checkbox-group bindchange="checkboxChange">
+    <view wx:for="{{cartItmes}}" wx:key="item" class="coll_li">
+      <view class="coll_left">
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <checkbox class="coll_true" value="{{item._id}}" checked="{{item.checked}}"></checkbox>
+      </view>
+      <view class="coll_rcon">
+        <view class="coll_txt">{{item.title}}</view>
+        <view class="coll_delete" bindtap="onClickDelete" data-id="{{item._id}}">删除</view>
+      </view>
+    </view>
+  </checkbox-group>
+</view>
+
+<!-- 搭配间为空时候 class 删掉  none可见 -->
+<view wx:else class="collbg">
+  <image src="../../images/icon/cobg.jpg" ></image>
+  <view class="coll_tit">您的搭配间为空</view>
+  <view class="coll_btn"><navigator hover-class="none">去逛逛</navigator></view>
+</view>
+
+<!-- 底部悬浮 -->
+<view class="coll_fix">
+  <view class="coll_all {{isAll?'sel':''}}" bindtap="onClickAll">全选</view>
+  <view class="collfix_rcon">
+    <view class="collfix_a" bindtap="onClickPopOpen" data-item="0" data-val="免费全屋软装搭配">免费全屋软装搭配</view>
+    <view class="collfix_a" bindtap="onClickPopOpen" data-item="1" data-val="立即获取报价">立即获取报价</view>
+  </view>
+</view>
+<view class="h102"></view>
+
+<!-- 免费全屋软装搭配 弹窗 -->
+<view class="coll_pop {{isPop?'collsel':''}}">
+  <view class="collpop_bg" bindtap="onClickPopClose"></view>
+  <view class="collpop_con">
+    <view class="collpop_tit">{{popTit}}</view>
+    <view class="collpop_close" bindtap="onClickPopClose"><image src="../../images/icon/close.png"></image></view>
+    <view class="collpop_form">
+      <view class="collpop_innput">
+        <view class="collpop_lt"><text>*</text>姓名</view>
+        <input type="text" value="{{commitData.name}}" bindinput="inputChange" data-item="name" placeholder="请输入您的姓名"></input>
+      </view>
+      <view class="collpop_innput">
+        <view class="collpop_lt"><text>*</text>电话</view>
+        <input type="number" value="{{commitData.phone}}" bindinput="inputChange" data-item="phone" placeholder="请输入您的电话"></input>
+      </view>     
+      <view class="collpop_innput">
+        <view class="collpop_lt">小区</view>
+        <input type="text" value="{{commitData.address}}" bindinput="inputChange" data-item="address" placeholder="请填写您居住的小区"></input>
+      </view> 
+      <button class="collpop_btn" bindtap="onClickCommit">提交</button>        
+    </view> 
+  </view>
+</view>

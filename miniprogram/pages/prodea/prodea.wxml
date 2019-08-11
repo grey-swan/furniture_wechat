@@ -1,0 +1,71 @@
+<!--pages/prodea/prodea.wxml-->
+<!-- 3-3商品详情页 -->
+
+<!-- 加入成功弹窗  class 加上 popsel 可见-->
+<view class="scs_pop {{isShow?'popsel':''}}"></view>
+<!-- 轮播 -->
+<view class='banner4'>
+  <swiper autoplay="true" circular="true" current="{{currentSwiper4}}" bindchange="swiperChange4" >
+    <block wx:for="{{itemDetail.img}}" wx:key>
+      <swiper-item>
+        <navigator hover-class="none">
+          <image lazy-load="true"  mode="widthFix" src='{{item}}'></image>
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="dots4">
+    <block wx:for="{{itemDetail.img}}" wx:key>
+      <view class="dot4{{index == currentSwiper4 ? ' active4' : ''}}"></view>
+    </block>
+  </view>
+</view>
+<view class="prodea_bfont">
+  <text>{{itemDetail.title}}</text>
+</view>
+<!-- 图文编辑 -->
+<view class="prodea_tit">详情介绍</view>
+<view class="prodea_bor"></view>
+<view class="prodea_con">
+  <rich-text nodes="{{itemDetail.content}}"></rich-text>
+</view>
+<!-- 底部悬浮 -->
+<view class="fix_bot">
+  <navigator bindtap="toIndex" class="fix_a1">
+  首页
+  </navigator>
+  <view bindtap="toCollection" class="fix_a2">
+  搭配间
+  </view>
+  <button open-type="contact" class="fix_a3" >
+  客服
+  </button> 
+  <view class="fix_a4" bindtap="onClickPopShow">
+  加入搭配间
+  </view>      
+</view>
+<view class="h102" hover-class="none"></view>
+
+<!-- 免费全屋软装搭配 弹窗 -->
+<view class="coll_pop {{isPop?'collsel':''}}">
+  <view class="collpop_bg" bindtap="onClickPopClose"></view>
+  <view class="collpop_con">
+    <view class="collpop_tit">免费全屋软装搭配</view>
+    <view class="collpop_close" bindtap="onClickPopClose"><image src="../../images/icon/close.png"></image></view>
+    <view class="collpop_form">
+      <view class="collpop_innput">
+        <view class="collpop_lt"><text>*</text>姓名</view>
+        <input type="text" placeholder="请输入您的姓名"></input>
+      </view>
+      <view class="collpop_innput">
+        <view class="collpop_lt"><text>*</text>电话</view>
+        <input type="number" placeholder="请输入您的电话"></input>
+      </view>     
+      <view class="collpop_innput">
+        <view class="collpop_lt">小区</view>
+        <input type="text" placeholder="请填写您居住的小区"></input>
+      </view> 
+      <button class="collpop_btn" value="">提交</button>        
+    </view> 
+  </view>
+</view>

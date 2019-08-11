@@ -1,0 +1,62 @@
+<!--pages/goods_list/goodslist.wxml-->
+<!-- 3-1商品列表页 -->
+<!-- 搜索 -->
+<view class="search">
+  <navigator hover-class="none" url="../../pages/search/search?type=goods">
+    搜索商品
+    <image src="../../images/icon/sea.png"></image>  
+  </navigator>
+</view>
+<!-- banner -->
+<view class="page_banner">
+  <image src="https://qiniu.laway.cn/2718264abbe511e98b7ac4b301cc20dd"  mode="widthFix"></image>
+</view>
+
+<!-- 筛选 -->
+<view class="good_slt">
+  <view class="goodslt_l {{isDown?'sel':''}}" bindtap="onClickDown">类别</view>
+  <view class="goodslt_r {{isUp?'sel':''}}" bindtap="onClickUp">饰品</view>
+
+  <view class="goodslt_ul {{isDown?'down':''}}">
+    <view wx:for="{{ptItems}}" wx:key="item" class="{{typeId==item._id?'sel':''}}" data-id="{{item._id}}" data-type="pt" bindtap="onFilterChange" hover-class="none">{{item.title}}</view>
+  </view>
+  <view class="goodslt_ul {{isUp?'down':''}}">
+    <view wx:for="{{spItems}}" wx:key="item" class="{{typeId==item._id?'sel':''}}" data-id="{{item._id}}" data-type="sp" bindtap="onFilterChange" hover-class="none" url="">{{item.title}}</view>
+  </view>
+</view>
+
+<!-- 列表 -->
+<view class="goods_list">
+  <navigator wx:for="{{goodsItmes}}" wx:key="item" hover-class="none" url="../prodea/prodea?_id={{item._id}}">
+    <view class="goods_img"><image mode="widthFix" src="{{item.img[0]}}"></image></view>
+    <text class="goods_tit">{{item.title}}</text>
+  </navigator>
+</view>
+
+<!-- 页码 -->
+<view class="page_num">
+  <view class="pagel {{page<=1?'':'sel'}}" bindtap="onClickPrev"></view>
+  <view class="pager {{page>=totalPage?'':'sel'}}" bindtap="onClickNext"></view>
+</view>
+<view class="page_numcon">
+  <block wx:if="{{totalPage <= 5}}">
+    <navigator wx:for="{{totalPage}}" wx:key="item" hover-class="none">{{item+1}}</navigator>
+  </block>
+  <block wx:elif="{{page <= 3}}">
+    <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{item+1}}</navigator>
+    <text>...</text>
+    <navigator hover-class="none">{{totalPage}}</navigator>
+  </block>
+  <block wx:elif="{{totalPage - page >= 3}}">
+    <navigator hover-class="none">1</navigator>
+    <text>...</text>
+    <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{page+item-1}}</navigator>
+    <text>...</text>
+    <navigator hover-class="none">{{totalPage}}</navigator>
+  </block>
+  <block wx:else>
+    <navigator hover-class="none">1</navigator>
+    <text>...</text>
+    <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{totalPage+item-2}}</navigator>
+  </block>
+</view>

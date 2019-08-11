@@ -1,0 +1,10 @@
+<!--pages/service/service.wxml-->
+
+<view class="ser_tit">华韵亿美家居官方客服</view>
+<view class="ser_ft">以下信息</view>
+<view class="ser_href {{isCir?'sersel':''}}" bindtap="onClickCir" >
+您将咨询我们官方客服，点击进入按钮连
+接我们客服
+</view>
+
+<button class="ser_btn" open-type='contact'>进入</button>

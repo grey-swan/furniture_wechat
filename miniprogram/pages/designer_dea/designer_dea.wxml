@@ -1,0 +1,47 @@
+<!--pages/designer_dea/designer_dea.wxml-->
+<!-- 6-3设计师详情页 -->
+<view class="desdea_con">
+  <view class="desdea_img"><image mode="widthFix" src="{{itemDetail.avatar}}"></image></view>
+  <view class="desdea_name">{{itemDetail.title}}</view>
+  <view class="desdea_bq">{{itemDetail.position}}</view>
+  <view class="deadea_bor"></view>
+  <view class="desdea_js">设计师介绍</view>
+  <view class="desdea_jscon">
+    <view class="edit">{{itemDetail.desc}}</view>
+  </view>
+</view>
+
+<!-- 底部悬浮 -->
+<view class="desdea_fix">
+  <view class="desdea_fxa1">
+    <navigator url="../designer_list/designerlist">查看其他设计师</navigator>
+  </view>
+  <view class="desdea_fxa2">
+    <view bindtap="onClickPopOpen">预约此设计师</view>
+  </view>  
+</view>
+<view class="h102"></view>
+
+<!-- 预约设计师 弹窗 -->
+<view class="coll_pop {{isPop?'collsel':''}}">
+  <view class="collpop_bg" bindtap="onClickPopClose"></view>
+  <view class="collpop_con">
+    <view class="collpop_tit">预约设计师</view>
+    <view class="collpop_close" bindtap="onClickPopClose"><image src="../../images/icon/close.png"></image></view>
+    <view class="collpop_form">
+      <view class="collpop_innput">
+        <view class="collpop_lt"><text>*</text>姓名</view>
+        <input type="text" value="{{commitData.name}}" bindinput="inputChange" data-item="name" placeholder="请输入您的姓名"></input>
+      </view>
+      <view class="collpop_innput">
+        <view class="collpop_lt"><text>*</text>电话</view>
+        <input type="number" value="{{commitData.phone}}" bindinput="inputChange" data-item="phone" placeholder="请输入您的电话"></input>
+      </view>
+      <view class="collpop_innput">
+        <view class="collpop_lt">小区</view>
+        <input type="text" value="{{commitData.address}}" bindinput="inputChange" data-item="address" placeholder="请填写您居住的小区"></input>
+      </view>
+      <button class="collpop_btn" bindtap="onClickCommit">提交</button>        
+    </view> 
+  </view>
+</view>

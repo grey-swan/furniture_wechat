@@ -1,0 +1,20 @@
+<!--pages/experience/experience.wxml-->
+<view class="ctc_con">
+  <view class="map"><image src="../../images/icon/map.jpg" mode="widthFix"></image></view>
+  <view class="ctc_name">华韵亿美世博店</view>
+  <view class="ctc_arr">地址：白龙路与东二环交汇处(石闸立交桥旁)</view>
+  <view class="ctc_arr">电话：0871-88888888</view>
+  <view class="ctc_font">温馨提示：可体验北欧式风格、美式风格、法式风格、简约轻奢
+浪漫温馨等个性化风格！</view>
+  <view class="map mt74"><image src="../../images/icon/map.jpg" mode="widthFix"></image></view>
+  <view class="ctc_name">华韵亿美世博店</view>
+  <view class="ctc_arr">地址：白龙路与东二环交汇处(石闸立交桥旁)</view>
+  <view class="ctc_arr">电话：0871-88888888</view>
+  <view class="ctc_font">温馨提示：可体验北欧式风格、美式风格、法式风格、简约轻奢
+浪漫温馨等个性化风格！</view>
+  <view class="index_list mt74">
+    <navigator hover-class="none" url="../about/about">
+      <image mode="widthFix" src="../../images/icon/mapimg.jpg"></image>
+    </navigator>
+  </view> 
+</view>

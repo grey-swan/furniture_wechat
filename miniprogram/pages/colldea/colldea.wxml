@@ -1,0 +1,48 @@
+<!--pages/colldea/colldea.wxml-->
+<!-- 5-1 全屋软装搭配 -->
+<view class="colldea_tit">全屋软装搭配设计</view>
+<view class="casedea_con">
+<!-- 最小高度500可以删掉 -->
+  <view class="edit min_height500">
+    <rich-text nodes="{{itemDetail.content}}"></rich-text>
+  </view>
+</view>
+<!-- 表单 -->
+<view class="colldea_form">
+  <view class="colldea_ftit">获得全屋软装搭配设计</view>
+  <view class="coodea_input">
+    <view class="collpop_lt"><text>*</text>姓名</view>
+    <input type="text" value="{{commitData.name}}" bindinput="inputChange" data-item="name" placeholder="请输入您的姓名"></input>
+  </view>  
+  <view class="coodea_input">
+    <view class="collpop_lt"><text>*</text>电话</view>
+    <input type="number" value="{{commitData.phone}}" bindinput="inputChange" data-item="phone" placeholder="请输入您的电话"></input>
+  </view>    
+  <view class="coodea_input">
+    <view class="collpop_lt">小区</view>
+    <input type="number" value="{{commitData.address}}" bindinput="inputChange" data-item="address" placeholder="请输入您的小区名称"></input>
+  </view>    
+  <view class="coodea_input">
+    <view class="collpop_lt">风格</view>
+    <view class='select_box'>
+      <view class='select' catchtap='selectTap'>
+          <text class='select_text'>{{selectData[index].title}}</text>
+          <view class='select_img {{selectShow&&"select_img_rotate"}}' ></view> 
+      </view>
+      <view class='option_box' 
+      style='height:{{selectShow?(selectData.length>5?325:selectData.length*80):0}}rpx;'>
+          <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item.title}}</text>
+      </view>
+    </view> 
+  </view> 
+  <button class="collpop_btn" bindtap="onClickCommit">提交</button> 
+</view>
+<!-- 底部按钮 -->
+<view class="collpop_bot">
+  <view class="colldea_a1">
+    <navigator url="../case_list/case_list">查看实景案例</navigator>
+  </view>
+  <view class="colldea_a1 colldea_mt">
+    <navigator url="../designer_list/designerlist">查看设计师</navigator>
+  </view>  
+</view>

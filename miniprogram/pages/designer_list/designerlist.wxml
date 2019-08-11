@@ -1,0 +1,49 @@
+<!--pages/designer_list/designerlist.wxml-->
+<!-- 6-2设计师列表页 -->
+<!-- 搜索 -->
+<view class="search">
+  <navigator hover-class="none" url="../../pages/search/search?type=designer">
+    搜索设计师
+    <image src="../../images/icon/sea.png"></image>  
+  </navigator>
+</view>
+<!-- banner -->
+<view class="page_banner">
+  <image src="https://qiniu.laway.cn/fd5b9c60bbe411e98b7ac4b301cc20dd"  mode="widthFix"></image>
+</view>
+<!-- 列表 -->
+<view class="inxdes_show mt66">
+  <navigator wx:for="{{designerItems}}" wx:key="item" class="inxdes_sa" hover-class="none" url="../designer_dea/designer_dea?_id={{item._id}}">
+      <image mode="widthFix" src="{{item.avatar}}"></image>
+      <text class="inxdes_name">{{item.title}}</text>
+      <text class="inxdes_bq">{{item.position}}</text>
+  </navigator>                        
+</view>  
+
+<!-- 页码 -->
+<view class="page_num">
+  <view class="pagel {{page<=1?'':'sel'}}" bindtap="onClickPrev"></view>
+  <view class="pager {{page>=totalPage?'':'sel'}}" bindtap="onClickNext"></view>
+</view>
+<view class="page_numcon">
+  <block wx:if="{{totalPage <= 5}}">
+    <navigator wx:for="{{totalPage}}" wx:key="item" hover-class="none">{{item+1}}</navigator>
+  </block>
+  <block wx:elif="{{page <= 3}}">
+    <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{item+1}}</navigator>
+    <text>...</text>
+    <navigator hover-class="none">{{totalPage}}</navigator>
+  </block>
+  <block wx:elif="{{totalPage - page >= 3}}">
+    <navigator hover-class="none">1</navigator>
+    <text>...</text>
+    <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{page+item-1}}</navigator>
+    <text>...</text>
+    <navigator hover-class="none">{{totalPage}}</navigator>
+  </block>
+  <block wx:else>
+    <navigator hover-class="none">1</navigator>
+    <text>...</text>
+    <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{totalPage+item-2}}</navigator>
+  </block>
+</view>
