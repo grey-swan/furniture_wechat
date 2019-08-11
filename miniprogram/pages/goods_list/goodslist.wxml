@@ -1,5 +1,6 @@
 <!--pages/goods_list/goodslist.wxml-->
 <!-- 3-1商品列表页 -->
+<!-- 缺省页面 -->
 <!-- 搜索 -->
 <view class="search">
   <navigator hover-class="none" url="../../pages/search/search?type=goods">
@@ -26,6 +27,9 @@
 </view>
 
 <!-- 列表 -->
+<view class="null">
+  没有找到任何结果
+</view>
 <view class="goods_list">
   <navigator wx:for="{{goodsItmes}}" wx:key="item" hover-class="none" url="../prodea/prodea?_id={{item._id}}">
     <view class="goods_img"><image mode="widthFix" src="{{item.img[0]}}"></image></view>
@@ -60,3 +64,24 @@
     <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{totalPage+item-2}}</navigator>
   </block>
 </view>
+
+<!-- 底部菜单 -->
+<view class="foo_fix">
+  <navigator open-type="switchTab" hover-class="none" url="../../pages/index/index">
+    首页
+  </navigator>
+  <navigator  open-type="switchTab"  hover-class="none" url="../../pages/class/class">
+    分类
+  </navigator>
+  <navigator  open-type="switchTab"  hover-class="none" url="../../pages/collocation/collocation">
+    搭配间
+  </navigator>
+  <view>
+  <button  open-type="contact"  hover-class="none"></button>  
+  客服
+  </view>  
+  <navigator  open-type="switchTab"  hover-class="none" url="../../pages/experience/experience">
+    体验地址
+  </navigator>        
+</view>
+<view class="h110"></view>

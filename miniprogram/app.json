@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/index/index",    
+    "pages/goods_list/goodslist",    
+    "pages/index/index",      
     "pages/designer_dea/designer_dea",    
     "pages/designer_list/designerlist",    
     "pages/experience/experience",      
@@ -8,8 +9,7 @@
     "pages/colldea/colldea",    
     "pages/case_deatils/casedea",    
     "pages/case_list/case_list",      
-    "pages/prodea/prodea",    
-    "pages/goods_list/goodslist",    
+    "pages/prodea/prodea",       
     "pages/class/class",        
     "pages/logs/logs",    
     "pages/service/service",    
@@ -22,44 +22,6 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "华韵亿美家居",
     "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "color": "#999",
-    "selectedColor": "#ebe5df",
-    "borderStyle": "white",
-    "backgroundColor": "#1b1b1b",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "iconPath": "images/icon/ic1.png",
-        "selectedIconPath": "images/icon/ic1s.png",
-        "text": "首页"
-      },
-      {
-        "pagePath": "pages/class/class",
-        "iconPath": "images/icon/ic2.png",
-        "selectedIconPath": "images/icon/ic2s.png",
-        "text": "分类"
-      },
-      {
-        "pagePath": "pages/collocation/collocation",
-        "iconPath": "images/icon/ic3.png",
-        "selectedIconPath": "images/icon/ic3s.png",
-        "text": "搭配间"
-      },
-      {
-        "pagePath": "pages/service/service",
-        "iconPath": "images/icon/ic4.png",
-        "selectedIconPath": "images/icon/ic4s.png",
-        "text": "客服"
-      },
-      {
-        "pagePath": "pages/experience/experience",
-        "iconPath": "images/icon/ic5.png",
-        "selectedIconPath": "images/icon/ic5s.png",
-        "text": "体验地址"
-      }
-    ]
   },
   "sitemapLocation": "sitemap.json"
 }
