@@ -20,16 +20,10 @@ Page({
    */
   onLoad: function (options) {
     const _id = options._id
-    wx.cloud.callFunction({
-      name: 'databaseOper',
-      data: {
-        collection: 'furniture',
-        type: 'doc',
-        _id: _id
-      }
-    }).then(res => {
-      this.setData({ itemDetail: res.result.data })
-      var article = res.result.data.content
+    const db = wx.cloud.database()
+
+    db.collection('furniture').doc(_id).get().then(res => {
+      this.setData({ itemDetail: res.data })
     })
   },
 

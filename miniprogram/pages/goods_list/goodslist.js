@@ -1,5 +1,5 @@
 // pages/goods_list/goodslist.js
-const db = wx.cloud.database()
+const util = require('../../utils/util.js')
 
 Page({
 
@@ -22,7 +22,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('getCurrentPages', getCurrentPages())
     // 获取商品列表
     this.data.type = options.type
     this.data.typeId = options.typeId
@@ -50,14 +49,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('goodlist on show')
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    console.log('goodlist on hide')
+
   },
 
   /**
@@ -91,12 +90,8 @@ Page({
    * 获取饰品列表
    */
   getSpList() {
-    db.collection('category').where({
-      type: '1'
-    }).limit(100).get({
-      success: res => {
-        this.setData({ spItems: res.data })
-      }
+    util.getCategoryList('1').then(res => {
+      this.setData({ spItems: res.data })
     })
   },
   /**
@@ -105,19 +100,13 @@ Page({
   getPtList() {
     if (this.data.type == 'style') {
       // 风格搜索要获取物品分类
-      db.collection('category').where({
-        type: '0'
-      }).limit(100).get({
-        success: res => {
-          this.setData({ ptItems: res.data })
-        }
+      util.getCategoryList('0').then(res => {
+        this.setData({ ptItems: res.data })
       })
     } else {
       // 物品搜索要获取风格分类
-      db.collection('style').limit(100).get({
-        success: res => {
-          this.setData({ ptItems: res.data })
-        }
+      util.getStyleList().then(res => {
+        this.setData({ ptItems: res.data })
       })
     }
   },
@@ -125,7 +114,6 @@ Page({
    * 获取商品列表
    */
   getGoodsList(filter) {
-    console.log('getGoodsList filter=', filter)
     wx.cloud.callFunction({
       name: 'databaseOper',
       data: {

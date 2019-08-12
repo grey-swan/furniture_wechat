@@ -33,11 +33,12 @@ Page({
     app.userInfoReadyCallback = res => {
       this.setData({ hasUserInfo: true })
     }
-  },
-  onShow: function () {
     this.getBannerList(0)
     this.getBannerList(1)
     this.getDesignerList()
+  },
+  onShow: function () {
+    
   },
   bindGetUserInfo: function (e) {
     var that = this
@@ -72,7 +73,7 @@ Page({
     var sysInfo = wx.getSystemInfoSync();
     var screeWidth = sysInfo.screenWidth;
     var scale = screeWidth / imgWidth;
-    // console.log(scale);
+    
     this.setData({
       height: imgHeight * scale
     })
@@ -88,6 +89,7 @@ Page({
     var sysInfo = wx.getSystemInfoSync();
     var screeWidth = sysInfo.screenWidth;
     var scale = screeWidth / imgWidth;
+
     this.setData({
       height2: imgHeight * scale
     })

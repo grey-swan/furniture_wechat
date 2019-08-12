@@ -21,25 +21,13 @@ Page({
    */
   onLoad: function (options) {
     const _id = options._id
-    wx.cloud.callFunction({
-      name: 'databaseOper',
-      data: {
-        collection: 'case',
-        type: 'doc',
-        _id: _id
-      }
+    const db = wx.cloud.database()
+
+    db.collection('case').doc(_id).get().then(res => {
+      this.setData({ itemDetail: res.data })
+      return util.getStyleList(res.data.style_id)
     }).then(res => {
-      this.setData({ itemDetail: res.result.data })
-      return wx.cloud.callFunction({
-        name: 'databaseOper',
-        data: {
-          collection: 'style',
-          type: 'doc',
-          _id: res.result.data.style_id
-        }
-      })
-    }).then(res => {
-      this.setData({ 'itemDetail.styleTitle': res.result.data.title })
+      this.setData({ 'itemDetail.styleTitle': res.data.title })
     })
   },
 
@@ -117,38 +105,24 @@ Page({
    */
   onClickCommit: function () {
     const commitData = this.data.commitData
-    const userId = wx.getStorageSync('userId')
-    const now = util.formatTime(new Date())
     const products = [this.data.itemDetail]
+    const types = 2
 
-    if (userId) {
-      wx.cloud.callFunction({
-        name: 'databaseOper',
-        data: {
-          collection: 'order',
-          type: 'add',
-          data: {
-            order_id: '',
-            status: 0,
-            types: 2,
-            name: commitData.name,
-            phone: commitData.phone,
-            address: commitData.address,
-            user_id: userId,
-            updated: now,
-            created: now,
-            products: products
-          }
-        }
-      }).then(res => {
-        this.onClickPopClose()
-        wx.showModal({
-          title: '预定成功',
-          content: '我们将会尽快联系您，请您保持电话畅通',
-          showCancel: false,
-          confirmText: '确定'
-        })
+    util.orderCommit(commitData, products, types).then(res => {
+      this.onClickPopClose()
+      wx.showModal({
+        title: '预定成功',
+        content: '我们将会尽快联系您，请您保持电话畅通',
+        showCancel: false,
+        confirmText: '确定'
       })
-    }
+    }).catch(err => {
+      wx.showModal({
+        title: '错误',
+        content: err,
+        showCancel: false,
+        confirmText: '确定'
+      })
+    })
   }
 })

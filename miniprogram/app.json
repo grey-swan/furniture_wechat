@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/collocation/collocation",    
     "pages/index/index",
+    "pages/collocation/collocation",
     "pages/goods_list/goodslist",
     "pages/designer_dea/designer_dea",
     "pages/designer_list/designerlist",
@@ -11,7 +11,6 @@
     "pages/case_list/case_list",
     "pages/prodea/prodea",
     "pages/class/class",
-    "pages/logs/logs",
     "pages/service/service",
     "pages/about/about",
     "pages/search/search"

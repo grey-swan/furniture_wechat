@@ -21,15 +21,10 @@ Page({
    */
   onLoad: function (options) {
     const _id = options._id
-    wx.cloud.callFunction({
-      name: 'databaseOper',
-      data: {
-        collection: 'designer',
-        type: 'doc',
-        _id: _id
-      }
-    }).then(res => {
-      this.setData({ itemDetail: res.result.data })
+    const db = wx.cloud.database()
+
+    db.collection('designer').doc(_id).get().then(res => {
+      this.setData({ itemDetail: res.data })
     })
   },
 
@@ -107,38 +102,24 @@ Page({
    */
   onClickCommit: function () {
     const commitData = this.data.commitData
-    const userId = wx.getStorageSync('userId')
-    const now = util.formatTime(new Date())
     const products = [this.data.itemDetail]
+    const types = 3
 
-    if (userId) {
-      wx.cloud.callFunction({
-        name: 'databaseOper',
-        data: {
-          collection: 'order',
-          type: 'add',
-          data: {
-            order_id: '',
-            status: 0,
-            types: 3,
-            name: commitData.name,
-            phone: commitData.phone,
-            address: commitData.address,
-            user_id: userId,
-            updated: now,
-            created: now,
-            products: products
-          }
-        }
-      }).then(res => {
-        this.onClickPopClose()
-        wx.showModal({
-          title: '预约成功',
-          content: '我们将会尽快联系您，请您保持电话畅通',
-          showCancel: false,
-          confirmText: '确定'
-        })
+    util.orderCommit(commitData, products, types).then(res => {
+      this.onClickPopClose()
+      wx.showModal({
+        title: '预约成功',
+        content: '我们将会尽快联系您，请您保持电话畅通',
+        showCancel: false,
+        confirmText: '确定'
       })
-    }
+    }).catch(err => {
+      wx.showModal({
+        title: '错误',
+        content: err,
+        showCancel: false,
+        confirmText: '确定'
+      })
+    })
   }
 })
