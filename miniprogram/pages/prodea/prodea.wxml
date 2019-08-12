@@ -31,12 +31,12 @@
 </view>
 <!-- 底部悬浮 -->
 <view class="fix_bot">
-  <navigator bindtap="toIndex" class="fix_a1">
+  <navigator open-type="reLaunch" url="../../pages/index/index" class="fix_a1">
   首页
   </navigator>
-  <view bindtap="toCollection" class="fix_a2">
+  <navigator url="../../pages/collocation/collocation" class="fix_a2">
   搭配间
-  </view>
+  </navigator>
   <button open-type="contact" class="fix_a3" >
   客服
   </button> 

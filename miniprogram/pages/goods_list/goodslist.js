@@ -22,6 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('getCurrentPages', getCurrentPages())
     // 获取商品列表
     this.data.type = options.type
     this.data.typeId = options.typeId

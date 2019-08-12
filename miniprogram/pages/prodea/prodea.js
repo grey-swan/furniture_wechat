@@ -152,13 +152,5 @@ Page({
         that.setData({ isShow: false })
       }, 1500)
     }
-  },
-  toIndex() {
-    wx.switchTab({url: '/pages/index/index'})
-  },
-  toCollection() {
-    wx.switchTab({
-      url: '/pages/collocation/collocation',
-    })
   }
 })

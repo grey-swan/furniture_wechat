@@ -10,3 +10,7 @@
 <view class="class_ul">
   <navigator wx:for="{{items}}" wx:key="item" hover-class="none" url="../goods_list/goodslist?typeId={{item._id}}&type=style">{{item.title}}</navigator>
 </view>
+
+<!-- 底部菜单 -->
+<import src="../templates/tabBar.wxml"/>
+<template is="tabBar"/>

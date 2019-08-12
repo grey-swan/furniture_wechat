@@ -1,0 +1,22 @@
+<!-- 底部菜单 -->
+<template name="tabBar">
+  <view class="foo_fix">
+    <navigator hover-class="none" open-type="{{openTypeHome ? openTypeHome : 'reLaunch'}}" url="../../pages/index/index">
+      首页
+    </navigator>
+    <navigator hover-class="none" open-type="{{openTypeCls ? openTypeCls : 'reLaunch'}}" url="../../pages/class/class">
+      分类
+    </navigator>
+    <navigator hover-class="none" open-type="{{openTypeCol ? openTypeCol : 'reLaunch'}}" url="../../pages/collocation/collocation">
+      搭配间
+    </navigator>
+    <view>
+    <button  open-type="contact"  hover-class="none"></button>  
+    客服
+    </view>  
+    <navigator hover-class="none" open-type="{{openTypeExp ? openTypeExp : 'reLaunch'}}" url="../../pages/experience/experience">
+      体验地址
+    </navigator>        
+  </view>
+  <view class="h110"></view>
+</template>

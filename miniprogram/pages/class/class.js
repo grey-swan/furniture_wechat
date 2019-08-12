@@ -12,13 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const db = wx.cloud.database()
-    db.collection('style').limit(128).get({
-      success: res => {
-        console.log(res)
-        this.setData({ items: res.data })
-      }
-    })
+    
   },
 
   /**
@@ -32,7 +26,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const db = wx.cloud.database()
+    db.collection('style').limit(128).get({
+      success: res => {
+        console.log(res)
+        this.setData({ items: res.data })
+      }
+    })
   },
 
   /**

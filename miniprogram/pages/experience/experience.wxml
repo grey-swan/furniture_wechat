@@ -18,3 +18,7 @@
     </navigator>
   </view> 
 </view>
+
+
+<import src="../templates/tabBar.wxml"/>
+<template is="tabBar"/>

@@ -13,6 +13,9 @@
   <image src="https://qiniu.laway.cn/8343ea18bbe411e98b7ac4b301cc20dd"  mode="widthFix"></image>
 </view>
 <!-- 列表 -->
+<view wx:if="{{caseItems.length == 0}}" class="null">
+  没有找到任何结果
+</view>
 <view class="case_ul">
   <view wx:for="{{caseItems}}" wx:key="item" class="case_li">
     <navigator url="../case_deatils/casedea?_id={{item._id}}">
@@ -52,3 +55,6 @@
     <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{totalPage+item-2}}</navigator>
   </block>
 </view>
+
+<import src="../templates/tabBar.wxml"/>
+<template is="tabBar"/>

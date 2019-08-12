@@ -27,7 +27,7 @@
 </view>
 
 <!-- 列表 -->
-<view class="null">
+<view wx:if="{{goodsItmes.length == 0}}" class="null">
   没有找到任何结果
 </view>
 <view class="goods_list">
@@ -66,22 +66,5 @@
 </view>
 
 <!-- 底部菜单 -->
-<view class="foo_fix">
-  <navigator open-type="switchTab" hover-class="none" url="../../pages/index/index">
-    首页
-  </navigator>
-  <navigator  open-type="switchTab"  hover-class="none" url="../../pages/class/class">
-    分类
-  </navigator>
-  <navigator  open-type="switchTab"  hover-class="none" url="../../pages/collocation/collocation">
-    搭配间
-  </navigator>
-  <view>
-  <button  open-type="contact"  hover-class="none"></button>  
-  客服
-  </view>  
-  <navigator  open-type="switchTab"  hover-class="none" url="../../pages/experience/experience">
-    体验地址
-  </navigator>        
-</view>
-<view class="h110"></view>
+<import src="../templates/tabBar.wxml"/>
+<template is="tabBar"/>
