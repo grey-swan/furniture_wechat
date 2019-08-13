@@ -8,7 +8,7 @@
 </view>
 <!-- 轮播1 -->
 <view class='banner' style="height:{{height}}px">
-  <swiper autoplay="true" circular="true" current="{{currentSwiper}}" bindchange="swiperChange" >
+  <swiper autoplay="true" circular="true" bindchange="swiperChange" >
     <block wx:for="{{bannerData1}}" wx:key="item">
       <swiper-item>
         <navigator wx:if="{{item.type == 0}}" hover-class="none" url="../prodea/prodea?_id={{item.product_id}}">
@@ -24,14 +24,14 @@
     </block>
   </swiper>
   <view class="dots">
-    <block wx:for="{{bannerData1}}" wx:key>
+    <block wx:for="{{bannerData1}}" wx:key="index">
       <view class="dot{{index == currentSwiper ? ' active' : ''}}"></view>
     </block>
   </view>
 </view>
 <!-- 轮播2 -->
 <view class='banner2' style="height:{{height2}}px">
-  <swiper autoplay="true" circular="true" current="{{currentSwiper2}}" bindchange="swiperChange2" >
+  <swiper autoplay="true" circular="true" bindchange="swiperChange2" >
     <block wx:for="{{bannerData2}}" wx:key>
       <swiper-item>
         <navigator wx:if="{{item.type == 0}}" hover-class="none" url="../prodea/prodea?_id={{item.product_id}}">
@@ -66,7 +66,7 @@
     <image class="inxdea_lx" src="../../images/icon/lx.png"></image>
   </navigator>
   <view class="inxdes_con">
-    <swiper  autoplay="true" circular="true" current="{{currentSwiper3}}" bindchange="swiperChange3">
+    <swiper  autoplay="true" circular="true" bindchange="swiperChange3">
       <swiper-item wx:for="{{desData}}" wx:for-item="desItem" wx:key="{{index}}">
         <view class="inxdes_show">
           <navigator class="inxdes_sa" hover-class="none" url="../designer_dea/designer_dea?_id={{item._id}}"

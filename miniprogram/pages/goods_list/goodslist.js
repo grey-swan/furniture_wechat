@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    filter: {},
     isDown:false,
     isUp: false,
     type: 'style',
@@ -32,8 +33,9 @@ Page({
     } else {
       filter['category_id'] = this.data.typeId
     }
+    this.data.filter = filter
 
-    this.getGoodsList(filter)
+    this.getGoodsList()
     this.getSpList()
     this.getPtList()
   },
@@ -113,14 +115,14 @@ Page({
   /**
    * 获取商品列表
    */
-  getGoodsList(filter) {
+  getGoodsList() {
     wx.cloud.callFunction({
       name: 'databaseOper',
       data: {
         collection: 'furniture',
         type: 'get',
         page: this.data.page,
-        where: filter
+        where: this.data.filter
       }
     }).then(res => {
       const result = res.result
@@ -154,11 +156,13 @@ Page({
   onClickPrev: function() {
     if (this.data.page > 1) {
       this.setData({ page: this.data.page - 1 })
+      this.getGoodsList()
     }
   },
   onClickNext: function () {
     if (this.data.page < this.data.totalPage) {
       this.setData({ page: this.data.page + 1 })
+      this.getGoodsList()
     }
   },
   onFilterChange(e) {
@@ -175,9 +179,10 @@ Page({
         filter['category_id'] = id
       }
     }
+    this.data.filter = filter
 
     this.setData({ typeId: id })
-    this.getGoodsList(filter)
+    this.getGoodsList()
     
     if (type == 'pt') {
       this.onClickDown()

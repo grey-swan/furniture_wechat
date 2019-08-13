@@ -9,6 +9,7 @@
 </view>
 <view class="class_ul">
   <navigator wx:for="{{items}}" wx:key="item" hover-class="none" url="../goods_list/goodslist?typeId={{item._id}}&type=style">{{item.title}}</navigator>
+  <navigator url="../colldea/colldea">全屋软装搭配</navigator>
 </view>
 
 <!-- 底部菜单 -->

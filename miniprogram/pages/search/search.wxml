@@ -1,7 +1,7 @@
 <!--pages/search/search.wxml-->
 
 <view class="sea_top">
-  <input bindinput="bindKeyInput" type="text" confirm-type="search" class="seatop_txt" placeholder="请输入关键字"></input>
+  <input bindinput="bindKeyInput" type="text" confirm-type="search" class="seatop_txt" placeholder="请输入关键字" focus="{{true}}" bindconfirm="onClickSearch"></input>
   <view class="seatop_icon" bindtap="onClickSearch"></view>
 </view>
 <view class="sea_tit">
