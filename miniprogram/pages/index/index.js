@@ -15,16 +15,8 @@ Page({
     currentSwiper3: 0,
     height:0,
     height2: 0,
-    motto: 'Hello World',
     userInfo: {},
-    hasUserInfo: true,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    hasUserInfo: true
   },
   onLoad: function () {
     app.authForbidCallBack = res => {
@@ -145,7 +137,6 @@ Page({
     }).then(res => {
       const data = res.result.data
       this.setData({ [dataSymbol]: data.slice(0, 6) })
-      console.log('data', dataSymbol, data)
     })
   }
 })

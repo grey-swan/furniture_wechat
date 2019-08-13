@@ -103,6 +103,7 @@ Page({
   onClickPopShow() {
     var that = this;
     const userId = wx.getStorageSync('userId')
+    console.log('userId', userId)
 
     if (userId) {
       const db = wx.cloud.database()
@@ -110,16 +111,15 @@ Page({
       db.collection('cart').where({
         user_id: userId,
         product_id: that.data.itemDetail._id
-      }).count().then(res2 => {
-        console.log('res2', res2)
-        if (res2.total == 0) {
+      }).count().then(res => {
+        if (res.total == 0) {
           return wx.cloud.callFunction({
             name: 'databaseOper',
             data: {
               collection: 'cart',
               type: 'add',
               data: {
-                user_id: res.data,
+                user_id: userId,
                 title: that.data.itemDetail.title,
                 product_id: that.data.itemDetail._id,
                 img: that.data.itemDetail.img[0],
