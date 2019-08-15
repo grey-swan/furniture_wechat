@@ -1,11 +1,8 @@
 {
   "pages": [
-    "pages/index/index",    
-    "pages/goods_list/goodslist",    
+    "pages/index/index",       
     "pages/prodea/prodea",    
     "pages/collocation/collocation",    
-    "pages/index/index",
-    "pages/collocation/collocation",
     "pages/goods_list/goodslist",
     "pages/designer_dea/designer_dea",
     "pages/designer_list/designerlist",
