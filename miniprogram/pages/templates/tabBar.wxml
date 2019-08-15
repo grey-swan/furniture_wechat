@@ -10,6 +10,7 @@
     <navigator hover-class="none" open-type="{{openTypeCol ? openTypeCol : 'reLaunch'}}" url="../../pages/collocation/collocation">
       搭配间
     </navigator>
+    
     <view>
     <button  open-type="contact"  hover-class="none"></button>  
     客服
