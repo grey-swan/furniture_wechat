@@ -1,19 +1,14 @@
 //app.js
 App({
   onLaunch: function () {
-    console.log('app onLaunch')
-
-    // 展示本地存储能力
-    var userId = wx.getStorageSync('userId')
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
-
     wx.cloud.init({
       // env: 'test-xtx3m',
       env: 'product-0yhcc',
       traceUser: true
     })
+
+    // 展示本地存储能力
+    var userId = wx.getStorageSync('userId')
 
     // 获取用户信息
     wx.getSetting({

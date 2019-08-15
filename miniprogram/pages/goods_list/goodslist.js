@@ -1,5 +1,5 @@
 // pages/goods_list/goodslist.js
-const db = wx.cloud.database()
+const util = require('../../utils/util.js')
 
 Page({
 
@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    filter: {},
     isDown:false,
     isUp: false,
     type: 'style',
@@ -22,7 +23,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('getCurrentPages', getCurrentPages())
     // 获取商品列表
     this.data.type = options.type
     this.data.typeId = options.typeId
@@ -33,8 +33,9 @@ Page({
     } else {
       filter['category_id'] = this.data.typeId
     }
+    this.data.filter = filter
 
-    this.getGoodsList(filter)
+    this.getGoodsList()
     this.getSpList()
     this.getPtList()
   },
@@ -50,14 +51,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('goodlist on show')
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    console.log('goodlist on hide')
+
   },
 
   /**
@@ -91,12 +92,8 @@ Page({
    * 获取饰品列表
    */
   getSpList() {
-    db.collection('category').where({
-      type: '1'
-    }).limit(100).get({
-      success: res => {
-        this.setData({ spItems: res.data })
-      }
+    util.getCategoryList('1').then(res => {
+      this.setData({ spItems: res.data })
     })
   },
   /**
@@ -105,34 +102,27 @@ Page({
   getPtList() {
     if (this.data.type == 'style') {
       // 风格搜索要获取物品分类
-      db.collection('category').where({
-        type: '0'
-      }).limit(100).get({
-        success: res => {
-          this.setData({ ptItems: res.data })
-        }
+      util.getCategoryList('0').then(res => {
+        this.setData({ ptItems: res.data })
       })
     } else {
       // 物品搜索要获取风格分类
-      db.collection('style').limit(100).get({
-        success: res => {
-          this.setData({ ptItems: res.data })
-        }
+      util.getStyleList().then(res => {
+        this.setData({ ptItems: res.data })
       })
     }
   },
   /**
    * 获取商品列表
    */
-  getGoodsList(filter) {
-    console.log('getGoodsList filter=', filter)
+  getGoodsList() {
     wx.cloud.callFunction({
       name: 'databaseOper',
       data: {
         collection: 'furniture',
         type: 'get',
         page: this.data.page,
-        where: filter
+        where: this.data.filter
       }
     }).then(res => {
       const result = res.result
@@ -166,11 +156,13 @@ Page({
   onClickPrev: function() {
     if (this.data.page > 1) {
       this.setData({ page: this.data.page - 1 })
+      this.getGoodsList()
     }
   },
   onClickNext: function () {
     if (this.data.page < this.data.totalPage) {
       this.setData({ page: this.data.page + 1 })
+      this.getGoodsList()
     }
   },
   onFilterChange(e) {
@@ -187,9 +179,10 @@ Page({
         filter['category_id'] = id
       }
     }
+    this.data.filter = filter
 
     this.setData({ typeId: id })
-    this.getGoodsList(filter)
+    this.getGoodsList()
     
     if (type == 'pt') {
       this.onClickDown()

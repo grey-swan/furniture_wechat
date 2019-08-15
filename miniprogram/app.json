@@ -1,9 +1,12 @@
 {
   "pages": [
+    "pages/index/index",    
     "pages/goods_list/goodslist",    
     "pages/prodea/prodea",    
-    "pages/index/index",    
     "pages/collocation/collocation",    
+    "pages/index/index",
+    "pages/collocation/collocation",
+    "pages/goods_list/goodslist",
     "pages/designer_dea/designer_dea",
     "pages/designer_list/designerlist",
     "pages/experience/experience",
@@ -11,7 +14,6 @@
     "pages/case_deatils/casedea",
     "pages/case_list/case_list",
     "pages/class/class",
-    "pages/logs/logs",
     "pages/service/service",
     "pages/about/about",
     "pages/search/search"

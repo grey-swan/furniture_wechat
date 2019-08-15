@@ -180,8 +180,6 @@ Page({
   onClickCommit() {
     const types = this.data.popItem
     const commitData = this.data.commitData
-    const userId = wx.getStorageSync('userId')
-    const now = util.formatTime(new Date())
     const products = []
 
     // 获取所选物品
@@ -191,44 +189,21 @@ Page({
       }
     })
 
-    if (userId) {
-      wx.cloud.callFunction({
-        name: 'databaseOper',
-        data: {
-          collection: 'order',
-          type: 'add',
-          data: {
-            order_id: '',
-            status: 0,
-            types: parseInt(this.data.popItem),
-            name: commitData.name,
-            phone: commitData.phone,
-            address: commitData.address,
-            user_id: userId,
-            updated: now,
-            created: now,
-            products: products
-          }
-        }
-      }).then(res => {
-        console.log('提交订单成功')
-        this.onClickPopClose()
-        wx.showModal({
-          title: '预定成功',
-          content: '我们将会尽快联系您，请您保持电话畅通',
-          showCancel: false,
-          confirmText: '确定'
-        })
-        }).catch(e => {
-          console.log('提交订单失败', e)
-      })
-    } else {
+    util.orderCommit(commitData, products, types).then(res => {
+      this.onClickPopClose()
       wx.showModal({
-        title: '错误',
-        content: '获取用户信息失败，请联系客服处理',
+        title: '预定成功',
+        content: '我们将会尽快联系您，请您保持电话畅通',
         showCancel: false,
         confirmText: '确定'
       })
-    }
+    }).catch(err => {
+      wx.showModal({
+        title: '错误',
+        content: err,
+        showCancel: false,
+        confirmText: '确定'
+      })
+    })
   }
 })

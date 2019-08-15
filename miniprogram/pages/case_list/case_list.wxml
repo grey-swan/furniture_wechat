@@ -4,7 +4,7 @@
 <!-- 搜索 -->
 <view class="search">
   <navigator hover-class="none" url="../../pages/search/search?type=case">
-    搜索商品
+    搜索案例
     <image src="../../images/icon/sea.png"></image>  
   </navigator>
 </view>

@@ -15,16 +15,8 @@ Page({
     currentSwiper3: 0,
     height:0,
     height2: 0,
-    motto: 'Hello World',
     userInfo: {},
-    hasUserInfo: true,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    hasUserInfo: true
   },
   onLoad: function () {
     app.authForbidCallBack = res => {
@@ -33,11 +25,12 @@ Page({
     app.userInfoReadyCallback = res => {
       this.setData({ hasUserInfo: true })
     }
-  },
-  onShow: function () {
     this.getBannerList(0)
     this.getBannerList(1)
     this.getDesignerList()
+  },
+  onShow: function () {
+    
   },
   bindGetUserInfo: function (e) {
     var that = this
@@ -72,7 +65,7 @@ Page({
     var sysInfo = wx.getSystemInfoSync();
     var screeWidth = sysInfo.screenWidth;
     var scale = screeWidth / imgWidth;
-    // console.log(scale);
+    
     this.setData({
       height: imgHeight * scale
     })
@@ -88,6 +81,7 @@ Page({
     var sysInfo = wx.getSystemInfoSync();
     var screeWidth = sysInfo.screenWidth;
     var scale = screeWidth / imgWidth;
+
     this.setData({
       height2: imgHeight * scale
     })
@@ -143,7 +137,6 @@ Page({
     }).then(res => {
       const data = res.result.data
       this.setData({ [dataSymbol]: data.slice(0, 6) })
-      console.log('data', dataSymbol, data)
     })
   }
 })

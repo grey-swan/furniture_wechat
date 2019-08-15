@@ -12,14 +12,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.cloud.callFunction({
-      name: 'databaseOper',
-      data: {
-        collection: 'company',
-        type: 'get'
-      }
-    }).then(res => {
-      this.setData({ itemDetail: res.result.data[0] })
+    const db = wx.cloud.database()
+    db.collection('company').get().then(res => {
+      this.setData({ itemDetail: res.data[0] })
     })
   },
 

@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    filter: {},
     caseItems: [],
     page: 1,  // 当前页码
     totalPage: 1 // 总页码
@@ -14,8 +15,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var filter = { title: options.title }
-    this.getCaseList(filter)
+    this.data.filter = { title: options.title }
+    this.getCaseList()
   },
 
   /**
@@ -69,14 +70,14 @@ Page({
   /**
    * 获取案例列表
    */
-  getCaseList(filter) {
+  getCaseList() {
     wx.cloud.callFunction({
       name: 'databaseOper',
       data: {
         collection: 'case',
         type: 'get',
         page: this.data.page,
-        where: filter
+        where: this.data.filter
       }
     }).then(res => {
       const result = res.result
@@ -86,11 +87,13 @@ Page({
   onClickPrev: function () {
     if (this.data.page > 1) {
       this.setData({ page: this.data.page - 1 })
+      this.getCaseList()
     }
   },
   onClickNext: function () {
     if (this.data.page < this.data.totalPage) {
       this.setData({ page: this.data.page + 1 })
+      this.getCaseList()
     }
   }
 })
