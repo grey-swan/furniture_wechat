@@ -111,4 +111,4 @@
 
 <!-- 底部菜单 -->
 <import src="../templates/tabBar.wxml"/>
-<template is="tabBar"/>
+<template is="tabBar" data="{{openTypeHome: 'switchTab'}}"/>

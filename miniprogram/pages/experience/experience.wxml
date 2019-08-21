@@ -21,4 +21,4 @@
 
 
 <import src="../templates/tabBar.wxml"/>
-<template is="tabBar"/>
+<template is="tabBar" data="{{openTypeExp: 'switchTab'}}"/>

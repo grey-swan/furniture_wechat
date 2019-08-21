@@ -126,7 +126,6 @@ Page({
     const types = 0
 
     util.orderCommit(commitData, products, types).then(res => {
-      this.onClickPopClose()
       wx.showModal({
         title: '预定成功',
         content: '我们将会尽快联系您，请您保持电话畅通',
