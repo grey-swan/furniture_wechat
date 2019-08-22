@@ -54,7 +54,7 @@ const orderCommit = (commitData, products, types, ) => {
           data: {
             order_id: '',
             status: 0,
-            types: parseInt(types),
+            types: types.toString(),
             name: commitData.name,
             phone: commitData.phone,
             address: commitData.address,

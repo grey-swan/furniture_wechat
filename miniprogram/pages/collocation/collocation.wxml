@@ -21,7 +21,9 @@
 <view wx:else class="collbg">
   <image src="../../images/icon/cobg.jpg" ></image>
   <view class="coll_tit">您的搭配间为空</view>
-  <view class="coll_btn"><navigator hover-class="none">去逛逛</navigator></view>
+  <view class="coll_btn">
+    <navigator hover-class="none" url="../goods_list/goodslist">去逛逛</navigator>
+  </view>
 </view>
 
 <!-- 底部悬浮 -->

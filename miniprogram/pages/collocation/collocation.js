@@ -84,7 +84,7 @@ Page({
       data: {
         collection: 'cart',
         type: 'get',
-        data: {
+        where: {
           user_id: userId
         }
       }
