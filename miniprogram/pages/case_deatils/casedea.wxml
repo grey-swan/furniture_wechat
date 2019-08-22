@@ -13,6 +13,7 @@
   </view>
 </view>
 <view class="casedea_btn" bindtap="onClickPopOpen">我想这样搭</view>
+<view class="h56"></view>
 
 <!-- 免费全屋软装搭配 弹窗 -->
 <view class="coll_pop {{isPop?'collsel':''}}">
