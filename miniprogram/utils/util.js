@@ -1,6 +1,7 @@
 /**
  * 时间格式化
  */
+const db = wx.cloud.database()
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -77,16 +78,12 @@ const orderCommit = (commitData, products, types, ) => {
 }
 
 const getCategoryList = type => {
-  const db = wx.cloud.database()
-
   return db.collection('category').where({
     type: type
   }).limit(100).get()
 }
 
 const getStyleList = _id => {
-  const db = wx.cloud.database()
-
   if (_id) {
     return db.collection('style').doc(_id).get()
   } else {
@@ -94,10 +91,66 @@ const getStyleList = _id => {
   }
 }
 
+const cacheCategory = type => {
+  db.collection('category').where({
+    type: type
+  }).limit(100).get().then(res => {
+    wx.setStorageSync('categoryItems', res.data)
+  })
+}
+
+const cacheStyle = () => {
+  db.collection('style').limit(100).get().then(res => {
+    wx.setStorageSync('styleItems', res.data)
+  })
+}
+
+const cacheBanner = position => {
+  wx.cloud.callFunction({
+    name: 'databaseOper',
+    data: {
+      collection: 'banner',
+      type: 'get',
+      page: 1,
+      where: { position: position, sort_order: 'order__asc' }
+    }
+  }).then(res => {
+    const data = res.result.data
+    const dataSymbol = (position == 0) ? 'bannerData1' : 'bannerData2'
+    wx.setStorageSync(dataSymbol, data.slice(0, 6))
+  })
+}
+
+const cacheDesigner = () => {
+  wx.cloud.callFunction({
+    name: 'databaseOper',
+    data: {
+      collection: 'designer',
+      type: 'get',
+      page: 1
+    }
+  }).then(res => {
+    const result = res.result
+    const total = result.total > 16 ? 16 : result.total
+    var designerList = []
+
+    for (let i = 0; i < result.total; i = i + 4) {
+      designerList.push({
+        deslist: result.data.slice(i, i + 4)
+      })
+    }
+    wx.setStorageSync('desData', designerList)
+  })
+}
+
 module.exports = {
   formatTime: formatTime,
   isInArray: isInArray,
   orderCommit: orderCommit,
   getCategoryList: getCategoryList,
-  getStyleList: getStyleList
+  getStyleList: getStyleList,
+  cacheCategory: cacheCategory,
+  cacheStyle: cacheStyle,
+  cacheBanner: cacheBanner,
+  cacheDesigner: cacheDesigner
 }

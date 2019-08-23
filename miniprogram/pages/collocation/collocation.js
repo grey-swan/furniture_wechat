@@ -25,7 +25,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getCartList()
   },
 
   /**
@@ -39,7 +39,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getCartList()
+    
   },
 
   /**
@@ -115,7 +115,6 @@ Page({
       popTit: e.target.dataset.val,
       popItem: e.target.dataset.item
     })
-    console.log(this.data.popTit);
   },
   onClickPopClose() {
     this.setData({
@@ -188,22 +187,31 @@ Page({
         products.push(element)
       }
     })
-
-    util.orderCommit(commitData, products, types).then(res => {
-      this.onClickPopClose()
-      wx.showModal({
-        title: '预定成功',
-        content: '我们将会尽快联系您，请您保持电话畅通',
-        showCancel: false,
-        confirmText: '确定'
-      })
-    }).catch(err => {
+    
+    if (products.length === 0) {
       wx.showModal({
         title: '错误',
-        content: err,
+        content: '请先选择物品',
         showCancel: false,
         confirmText: '确定'
       })
-    })
+    } else {
+      util.orderCommit(commitData, products, types).then(res => {
+        this.onClickPopClose()
+        wx.showModal({
+          title: '预定成功',
+          content: '我们将会尽快联系您，请您保持电话畅通',
+          showCancel: false,
+          confirmText: '确定'
+        })
+      }).catch(err => {
+        wx.showModal({
+          title: '错误',
+          content: err,
+          showCancel: false,
+          confirmText: '确定'
+        })
+      })
+    }
   }
 })

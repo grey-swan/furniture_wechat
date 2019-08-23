@@ -1,5 +1,4 @@
 // pages/class/class.js
-const util = require('../../utils/util.js')
 
 Page({
 
@@ -14,7 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.setData({ items: wx.getStorageSync('styleItems') })
   },
 
   /**
@@ -28,9 +27,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    util.getStyleList().then(res => {
-      this.setData({ items: res.data })
-    })
+
   },
 
   /**

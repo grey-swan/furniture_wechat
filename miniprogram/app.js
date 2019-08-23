@@ -37,6 +37,20 @@ App({
       }
     })
   },
+  onShow: function () {
+    const util = require('/utils/util.js')
+
+    // 获取banner1列表
+    util.cacheBanner(0)
+    // 获取banner2列表
+    util.cacheBanner(1)
+    // 获取风格列表
+    util.cacheStyle()
+    // 获取分类列表
+    util.cacheCategory()
+    // 缓存设计师
+    util.cacheDesigner()
+  },
   globalData: {
     userInfo: null
   }

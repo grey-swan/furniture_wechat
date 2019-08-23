@@ -6,7 +6,6 @@ Page({
   data: {
     bannerData1: [],
     bannerData2: [],
-    designerItems: [],
     designerPage: 1,
     designerTotalPage: 1,
     desData:[] ,
@@ -25,12 +24,11 @@ Page({
     app.userInfoReadyCallback = res => {
       this.setData({ hasUserInfo: true })
     }
-    this.getBannerList(0)
-    this.getBannerList(1)
-    this.getDesignerList()
   },
   onShow: function () {
-    
+    this.setData({ bannerData1: wx.getStorageSync('bannerData1') })
+    this.setData({ bannerData2: wx.getStorageSync('bannerData2') })
+    this.setData({ desData: wx.getStorageSync('desData') })
   },
   bindGetUserInfo: function (e) {
     var that = this
@@ -94,49 +92,6 @@ Page({
   swiperChange3: function (e) {
     this.setData({
       currentSwiper3: e.detail.current
-    })
-  },
-  /**
-   * 获取设计师列表
-   */
-  getDesignerList() {
-    wx.cloud.callFunction({
-      name: 'databaseOper',
-      data: {
-        collection: 'designer',
-        type: 'get',
-        page: this.data.page
-      }
-    }).then(res => {
-      const result = res.result
-      const total = result.total > 16 ? 16 : result.total
-      var designerList = []
-      
-      for (let i = 0; i < result.total; i = i + 4) {
-        designerList.push({
-          deslist: result.data.slice(i, i + 4)
-        })
-      }
-      this.setData({ desData: designerList })
-    })
-  },
-  /**
-   * 获取广告位列表
-   */
-  getBannerList(position) {
-    const dataSymbol = (position == 0) ? 'bannerData1' : 'bannerData2'
-    
-    wx.cloud.callFunction({
-      name: 'databaseOper',
-      data: {
-        collection: 'banner',
-        type: 'get',
-        page: this.data.page,
-        where: { position: position, sort_order: 'order__asc' }
-      }
-    }).then(res => {
-      const data = res.result.data
-      this.setData({ [dataSymbol]: data.slice(0, 6) })
     })
   }
 })
