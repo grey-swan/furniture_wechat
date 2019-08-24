@@ -15,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.filter = { title: options.title }
+    this.data.filter = { page: 1, title: options.title }
     this.getDesignerList()
   },
 
@@ -76,7 +76,6 @@ Page({
       data: {
         collection: 'designer',
         type: 'get',
-        page: this.data.page,
         where: this.data.filter
       }
     }).then(res => {
@@ -86,13 +85,15 @@ Page({
   },
   onClickPrev: function () {
     if (this.data.page > 1) {
-      this.setData({ page: this.data.page - 1 })
+      const page = this.data.page - 1
+      this.setData({ page: page, 'filter.page': page })
       this.getDesignerList()
     }
   },
   onClickNext: function () {
     if (this.data.page < this.data.totalPage) {
-      this.setData({ page: this.data.page + 1 })
+      const page = this.data.page + 1
+      this.setData({ page: page, 'filter.page': page })
       this.getDesignerList()
     }
   },

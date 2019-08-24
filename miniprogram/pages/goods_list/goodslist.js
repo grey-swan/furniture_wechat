@@ -27,7 +27,7 @@ Page({
     this.data.type = options.type
     this.data.typeId = options.typeId
 
-    var filter = { title: options.title }
+    var filter = { title: options.title, page: 1 }
     if (this.data.type === 'style') {
       filter['style_id'] = this.data.typeId
     } else {
@@ -121,7 +121,6 @@ Page({
       data: {
         collection: 'furniture',
         type: 'get',
-        page: this.data.page,
         where: this.data.filter
       }
     }).then(res => {
@@ -153,15 +152,17 @@ Page({
       })
     }
   },
-  onClickPrev: function() {
+  onClickPrev: function () {
     if (this.data.page > 1) {
-      this.setData({ page: this.data.page - 1 })
+      const page = this.data.page - 1
+      this.setData({ page: page, 'filter.page': page })
       this.getGoodsList()
     }
   },
   onClickNext: function () {
     if (this.data.page < this.data.totalPage) {
-      this.setData({ page: this.data.page + 1 })
+      const page = this.data.page + 1
+      this.setData({ page: page, 'filter.page': page })
       this.getGoodsList()
     }
   },

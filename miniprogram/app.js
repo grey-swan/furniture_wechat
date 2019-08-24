@@ -39,6 +39,7 @@ App({
   },
   onShow: function () {
     const util = require('/utils/util.js')
+    const that = this
 
     // 获取banner1列表
     util.cacheBanner(0)
@@ -50,6 +51,12 @@ App({
     util.cacheCategory()
     // 缓存设计师
     util.cacheDesigner()
+    // Page里的onLoad比这里先执行，这样可以避免cacheCallback没有定义导致回调不执行
+    setTimeout(function () {
+      if (that.cacheCallback) {
+        that.cacheCallback()
+      }
+    }, 1000)
   },
   globalData: {
     userInfo: null

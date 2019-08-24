@@ -85,7 +85,7 @@ Page({
         collection: 'cart',
         type: 'get',
         where: {
-          user_id: userId
+          user_id: userId, pageSize: 30
         }
       }
     }).then(res => {

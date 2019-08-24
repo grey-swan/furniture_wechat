@@ -11,14 +11,17 @@
   <swiper autoplay="true" circular="true" bindchange="swiperChange" >
     <block wx:for="{{bannerData1}}" wx:key="item">
       <swiper-item>
-        <navigator wx:if="{{item.type == 0}}" hover-class="none" url="../prodea/prodea?_id={{item.product_id}}">
+        <navigator wx:if="{{item.position == 0 && item.type == 0}}" hover-class="none" url="../prodea/prodea?_id={{item.product_id}}">
           <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
-        <navigator wx:elif="{{item.type == 1}}" hover-class="none" url="../case_deatils/casedea?_id={{item.product_id}}">
+        <navigator wx:elif="{{item.position == 0 && item.type == 1}}" hover-class="none" url="../case_deatils/casedea?_id={{item.product_id}}">
           <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
-        <navigator wx:elif="{{item.type == 2}}" hover-class="none" url="../designer_dea/designer_dea?_id={{item.product_id}}">
+        <navigator wx:elif="{{item.position == 0 && item.type == 2}}" hover-class="none" url="../designer_dea/designer_dea?_id={{item.product_id}}">
           <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
+        </navigator>
+        <navigator wx:if="{{item.position == 1}}" hover-class="none" url="../goods_list/goodslist?typeId={{item.style_id}}&type=style">
+          <image lazy-load="true" bindload="setConHeight2" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
       </swiper-item>
     </block>
@@ -34,13 +37,16 @@
   <swiper autoplay="true" circular="true" bindchange="swiperChange2" >
     <block wx:for="{{bannerData2}}" wx:key>
       <swiper-item>
-        <navigator wx:if="{{item.type == 0}}" hover-class="none" url="../prodea/prodea?_id={{item.product_id}}">
-          <image lazy-load="true" bindload="setConHeight2" mode="widthFix" src='{{item.cover}}'></image>
+        <navigator wx:if="{{item.position == 0 && item.type == 0}}" hover-class="none" url="../prodea/prodea?_id={{item.product_id}}">
+          <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
-        <navigator wx:elif="{{item.type == 1}}" hover-class="none" url="../case_deatils/casedea?_id={{item.product_id}}">
-          <image lazy-load="true" bindload="setConHeight2" mode="widthFix" src='{{item.cover}}'></image>
+        <navigator wx:elif="{{item.position == 0 && item.type == 1}}" hover-class="none" url="../case_deatils/casedea?_id={{item.product_id}}">
+          <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
-        <navigator wx:elif="{{item.type == 2}}" hover-class="none" url="../designer_dea/designer_dea?_id={{item.product_id}}">
+        <navigator wx:elif="{{item.position == 0 && item.type == 2}}" hover-class="none" url="../designer_dea/designer_dea?_id={{item.product_id}}">
+          <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
+        </navigator>
+        <navigator wx:if="{{item.position == 1}}" hover-class="none" url="../goods_list/goodslist?typeId={{item.style_id}}&type=style">
           <image lazy-load="true" bindload="setConHeight2" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
       </swiper-item>
@@ -55,7 +61,7 @@
 <!--软件服务优势  -->
 <view class="inx_serive">
   <navigator hover-class="none" url="../colldea/colldea">
-    <image lazy-load="true" mode="widthFix" src="https://qiniu.laway.cn/d02e6268bbe411e98b7ac4b301cc20dd"></image>
+    <image lazy-load="true" mode="widthFix" src="http://hyym.oocpo.com/72461fcec59411e98ad35254008e9dc2.jpg"></image>
   </navigator>
 </view>
 <!-- 金牌设计师 -->
@@ -87,7 +93,7 @@
   <!-- 图片列表 -->
   <view class="index_list">
     <navigator hover-class="none" url="../case_list/case_list">
-      <image mode="widthFix" src="https://qiniu.laway.cn/af87b190bbe411e98b7ac4b301cc20dd"></image>
+      <image mode="widthFix" src="http://hyym.oocpo.com/8b48f668c59411e98ad35254008e9dc2.jpg"></image>
     </navigator>
   </view>
   <view class="index_list">

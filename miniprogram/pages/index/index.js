@@ -24,6 +24,12 @@ Page({
     app.userInfoReadyCallback = res => {
       this.setData({ hasUserInfo: true })
     }
+    app.cacheCallback = res => {
+      this.setData({ bannerData1: wx.getStorageSync('bannerData1') })
+      this.setData({ bannerData2: wx.getStorageSync('bannerData2') })
+      this.setData({ desData: wx.getStorageSync('desData') })
+    }
+    
   },
   onShow: function () {
     this.setData({ bannerData1: wx.getStorageSync('bannerData1') })

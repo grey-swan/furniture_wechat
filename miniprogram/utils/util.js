@@ -80,27 +80,27 @@ const orderCommit = (commitData, products, types, ) => {
 const getCategoryList = type => {
   return db.collection('category').where({
     type: type
-  }).limit(100).get()
+  }).limit(20).get()
 }
 
 const getStyleList = _id => {
   if (_id) {
     return db.collection('style').doc(_id).get()
   } else {
-    return db.collection('style').limit(100).get()
+    return db.collection('style').limit(20).get()
   }
 }
 
 const cacheCategory = type => {
   db.collection('category').where({
     type: type
-  }).limit(100).get().then(res => {
+  }).limit(20).get().then(res => {
     wx.setStorageSync('categoryItems', res.data)
   })
 }
 
 const cacheStyle = () => {
-  db.collection('style').limit(100).get().then(res => {
+  db.collection('style').limit(20).get().then(res => {
     wx.setStorageSync('styleItems', res.data)
   })
 }
@@ -111,8 +111,7 @@ const cacheBanner = position => {
     data: {
       collection: 'banner',
       type: 'get',
-      page: 1,
-      where: { position: position, sort_order: 'order__asc' }
+      where: { page: 1, position: position, sort_order: 'order__asc' }
     }
   }).then(res => {
     const data = res.result.data
@@ -127,7 +126,7 @@ const cacheDesigner = () => {
     data: {
       collection: 'designer',
       type: 'get',
-      page: 1
+      where: { page: 1 }
     }
   }).then(res => {
     const result = res.result

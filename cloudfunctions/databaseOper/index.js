@@ -19,39 +19,40 @@ exports.main = async (event, context) => {
   if (type === 'doc') {
     return await db.collection(cName).doc(id).get()
   } else if (type === 'get') {
-    var where = event.where ? event.where : {}
+    var filter = event.where ? event.where : {}
     var order = {}
-    const page = where.page ? where.page : 1
-    const pageSize = where.pageSize ? where.pageSize : 16
+    const page = filter.page ? parseInt(filter.page) : 1
+    const pageSize = filter.pageSize ? filter.pageSize : 16
     const offset = (page - 1) * pageSize
 
-    delete where.page
-    delete where.pageSize
+    console.log('>>> filter', filter)
+    delete filter.page
+    delete filter.pageSize
 
-    const countResult = await db.collection(cName).where(where).count()
-    const total = countResult.total
-    const totalPage = Math.ceil(total / pageSize)
-
-    Object.keys(where).forEach(key => {
-      var value = where[key]
+    Object.keys(filter).forEach(key => {
+      var value = filter[key]
       if (typeof(value) == 'string') {
         var vls = value.split('__')
         if (vls.length == 2 && vls[0] == 'like') {
-          where[key] = { '$regex': vls[1], '$options': 'i' }
+          filter[key] = { '$regex': vls[1], '$options': 'i' }
         } else if (vls.length == 2 && vls[0] == 'order') {
           order['field'] = key
           order['order'] = vls[1]
-          delete where[key]
+          delete filter[key]
         }
       }
     })
-    console.log('>>> where', where)
+    const countRes = await db.collection(cName).where(filter).count()
+    const total = countRes.total
+    const totalPage = Math.ceil(total / pageSize)
+
+    console.log('>>> where', filter)
     console.log('>>> order', order)
 
     if (order.field && order.order) {
-      res = await db.collection(cName).where(where).orderBy(order.field, order.order).skip(offset).limit(pageSize).get()
+      res = await db.collection(cName).where(filter).orderBy(order.field, order.order).skip(offset).limit(pageSize).get()
     } else {
-      res = await db.collection(cName).where(where).skip(offset).limit(pageSize).get()
+      res = await db.collection(cName).where(filter).skip(offset).limit(pageSize).get()
     }
     return {
       data: res.data,

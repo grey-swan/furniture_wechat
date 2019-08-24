@@ -9,7 +9,7 @@
 </view>
 <!-- banner -->
 <view class="page_banner">
-  <image src="https://qiniu.laway.cn/fd5b9c60bbe411e98b7ac4b301cc20dd"  mode="widthFix"></image>
+  <image src="http://hyym.oocpo.com/3c724dfac59411e98ad35254008e9dc2.jpg"  mode="widthFix"></image>
 </view>
 <!-- 列表 -->
 <view wx:if="{{designerItems.length == 0}}" class="null">
