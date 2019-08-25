@@ -1,4 +1,6 @@
 // pages/case_list/case_list.js
+const util = require('../../utils/util.js')
+
 Page({
 
   /**
@@ -8,7 +10,8 @@ Page({
     filter: {},
     caseItems: [],
     page: 1,  // 当前页码
-    totalPage: 1 // 总页码
+    totalPage: 1, // 总页码
+    pageArray: [] // 分页列表
   },
 
   /**
@@ -80,7 +83,8 @@ Page({
       }
     }).then(res => {
       const result = res.result
-      this.setData({ caseItems: result.data, page: result.page, totalPage: result.totalPage })
+      const pageArray = util.pagination(result.page, result.totalPage)
+      this.setData({ caseItems: result.data, page: result.page, totalPage: result.totalPage, pageArray: pageArray })
     })
   },
   onClickPrev: function () {

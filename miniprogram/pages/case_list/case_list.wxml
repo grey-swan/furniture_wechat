@@ -33,27 +33,9 @@
   <view class="pagel {{page<=1?'':'sel'}}" bindtap="onClickPrev"></view>
   <view class="pager {{page>=totalPage?'':'sel'}}" bindtap="onClickNext"></view>
 </view>
+
 <view class="page_numcon">
-  <block wx:if="{{totalPage <= 5}}">
-    <navigator wx:for="{{totalPage}}" wx:key="item" hover-class="none">{{item+1}}</navigator>
-  </block>
-  <block wx:elif="{{page <= 3}}">
-    <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{item+1}}</navigator>
-    <text>...</text>
-    <navigator hover-class="none">{{totalPage}}</navigator>
-  </block>
-  <block wx:elif="{{totalPage - page >= 3}}">
-    <navigator hover-class="none">1</navigator>
-    <text>...</text>
-    <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{page+item-1}}</navigator>
-    <text>...</text>
-    <navigator hover-class="none">{{totalPage}}</navigator>
-  </block>
-  <block wx:else>
-    <navigator hover-class="none">1</navigator>
-    <text>...</text>
-    <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{totalPage+item-2}}</navigator>
-  </block>
+  <navigator wx:for="{{pageArray}}" wx:key="item" hover-class="none" class="{{item==page?'sel':''}}">{{item}}</navigator>
 </view>
 
 <import src="../templates/tabBar.wxml"/>

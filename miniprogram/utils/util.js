@@ -30,6 +30,19 @@ const isInArray = (arr, value) => {
   return false;
 }
 
+/**
+ * 获取分页数组，最多显示7个页码
+ */
+const pagination = (page, totalPage) => {
+  const offset = totalPage - 7 < 1 ? 6 : 3
+  const beginPage = page - offset < 1 ? 1 : page - offset
+  const endPage = page + offset > totalPage ? totalPage : page + offset
+  var pageArray = []
+  for (let i = beginPage; i <= endPage; i++) {
+    pageArray.push(i)
+  }
+  return pageArray
+}
 
 /**
  * 提交订单
@@ -145,6 +158,7 @@ const cacheDesigner = () => {
 module.exports = {
   formatTime: formatTime,
   isInArray: isInArray,
+  pagination: pagination,
   orderCommit: orderCommit,
   getCategoryList: getCategoryList,
   getStyleList: getStyleList,
