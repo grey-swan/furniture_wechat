@@ -49,7 +49,7 @@
 
 <!-- <view class="page_numcon">
   <block wx:if="{{totalPage <= 5}}">
-    <navigator wx:for="{{totalPage}}" wx:key="item" hover-class="none" class="{{item+1==page?'sel':''}}">{{item+1}}</navigator>
+    <navigator  wx:for="{{totalPage}}" wx:key="item" hover-class="none">{{item+1}}</navigator>
   </block>
   <block wx:elif="{{page <= 3}}">
     <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{item+1}}</navigator>
