@@ -44,7 +44,7 @@
 </view>
 
 <view class="page_numcon">
-  <navigator wx:for="{{pageArray}}" wx:key="item" hover-class="none" class="{{item==page?'sel':''}}" data-page="{{item}}" bindtap="onClickPage">{{item}}</navigator>
+  <view wx:for="{{pageArray}}" wx:key="item" hover-class="none" class="{{item==page?'sel':''}}" data-page="{{item}}" bindtap="onClickPage">{{item}}</view>
 </view>
 
 <!-- <view class="page_numcon">
