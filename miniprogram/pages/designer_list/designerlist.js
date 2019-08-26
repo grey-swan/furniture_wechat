@@ -101,4 +101,11 @@ Page({
       this.getDesignerList()
     }
   },
+  onClickPage: function (e) {
+    const page = e.currentTarget.dataset.page
+    if (page != this.data.page) {
+      this.setData({ page: page, 'filter.page': page })
+      this.getGoodsList()
+    }
+  }
 })
