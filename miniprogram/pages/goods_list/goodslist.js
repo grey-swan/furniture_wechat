@@ -116,7 +116,7 @@ Page({
   /**
    * 获取商品列表
    */
-  getGoodsList() {
+  getGoodsList(top=false) {
     wx.cloud.callFunction({
       name: 'databaseOper',
       data: {
@@ -128,6 +128,9 @@ Page({
       const result = res.result
       const pageArray = util.pagination(result.page, result.totalPage)
       this.setData({ goodsItmes: result.data, page: result.page, totalPage: result.totalPage, pageArray: pageArray })
+      if (top) {
+        wx.pageScrollTo({ scrollTop: 0, duration: 300 })
+      }
     })
   },
   onClickDown:function(){
@@ -158,21 +161,21 @@ Page({
     if (this.data.page > 1) {
       const page = this.data.page - 1
       this.setData({ page: page, 'filter.page': page })
-      this.getGoodsList()
+      this.getGoodsList(true)
     }
   },
   onClickNext: function () {
     if (this.data.page < this.data.totalPage) {
       const page = this.data.page + 1
       this.setData({ page: page, 'filter.page': page })
-      this.getGoodsList()
+      this.getGoodsList(true)
     }
   },
   onClickPage: function (e) {
     const page = e.currentTarget.dataset.page
     if (page != this.data.page) {
       this.setData({ page: page, 'filter.page': page })
-      this.getGoodsList()
+      this.getGoodsList(true)
     }
   },
   onFilterChange(e) {

@@ -85,6 +85,7 @@ Page({
       const result = res.result
       const pageArray = util.pagination(result.page, result.totalPage)
       this.setData({ designerItems: result.data, page: result.page, totalPage: result.totalPage, pageArray: pageArray })
+      wx.pageScrollTo({ scrollTop: 0, duration: 300 })
     })
   },
   onClickPrev: function () {
