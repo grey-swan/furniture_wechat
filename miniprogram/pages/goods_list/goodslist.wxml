@@ -3,7 +3,11 @@
 <!-- 缺省页面 -->
 <!-- 搜索 -->
 <view class="search">
-  <navigator hover-class="none" url="../../pages/search/search?type=goods">
+  <navigator wx:if="{{type === 'style'}}" hover-class="none" url="../../pages/search/search?type=goods&style_id={{typeId}}">
+    搜索商品
+    <image src="../../images/icon/sea.png"></image>  
+  </navigator>
+  <navigator wx:else hover-class="none" url="../../pages/search/search?type=goods">
     搜索商品
     <image src="../../images/icon/sea.png"></image>  
   </navigator>

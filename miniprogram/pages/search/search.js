@@ -6,14 +6,15 @@ Page({
    */
   data: {
     searchText: '',
-    type: ''
+    type: '',
+    styleId: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ type: options.type })
+    this.setData({ type: options.type, styleId: options.style_id })
   },
 
   /**
@@ -77,8 +78,12 @@ Page({
    */
   onClickSearch: function () {
     if (this.data.type == 'goods') {
+      var url = '/pages/goods_list/goodslist?title=like__' + this.data.searchText
+      if (this.data.styleId) {
+        url += '&type=style&typeId=' + this.data.styleId
+      }
       wx.navigateTo({
-        url: '/pages/goods_list/goodslist?title=like__' + this.data.searchText,
+        url: url,
       })
     } else if (this.data.type == 'designer') {
       wx.navigateTo({

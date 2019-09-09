@@ -25,6 +25,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({ cartItmes: wx.getStorageSync('cartItems') })
     this.getCartList()
   },
 
@@ -89,7 +90,9 @@ Page({
         }
       }
     }).then(res => {
-      this.setData({ cartItmes: res.result.data })
+      const data = res.result.data
+      this.setData({ cartItmes: data })
+      wx.setStorageSync('cartItems', data)
     })
   },
   onClickAll:function(){
@@ -138,17 +141,6 @@ Page({
     })
   },
   /**
-   * 选择物品-可能没用
-   */
-  onClickSel(e) {
-    const id = e.currentTarget.dataset.id
-    var flag = this.data.selectedItems[id]
-    const key = 'selectedItems.'+id
-    this.setData({
-      [key]: !flag
-    })
-  },
-  /**
    * 选择变更后触发
    */
   checkboxChange(e) {
@@ -188,7 +180,7 @@ Page({
       }
     })
     
-    if (products.length === 0) {
+    if (types === '1' && products.length === 0) {
       wx.showModal({
         title: '错误',
         content: '请先选择物品',

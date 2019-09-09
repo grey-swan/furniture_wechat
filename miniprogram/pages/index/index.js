@@ -28,6 +28,7 @@ Page({
       this.setData({ bannerData1: wx.getStorageSync('bannerData1') })
       this.setData({ bannerData2: wx.getStorageSync('bannerData2') })
       this.setData({ desData: wx.getStorageSync('desData') })
+      console.log(this.data.bannerData2)
     }
     
   },

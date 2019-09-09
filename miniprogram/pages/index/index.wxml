@@ -11,17 +11,28 @@
   <swiper autoplay="true" circular="true" bindchange="swiperChange" >
     <block wx:for="{{bannerData1}}" wx:key="item">
       <swiper-item>
-        <navigator wx:if="{{item.position == 0 && item.type == 0}}" hover-class="none" url="../prodea/prodea?_id={{item.product_id}}">
+        <!-- 商品 -->
+        <navigator wx:if="{{item.link_type == 0 && item.type == 0}}" hover-class="none" url="../goods_list/goodslist?typeId={{item.style_id}}&type=style">
           <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
-        <navigator wx:elif="{{item.position == 0 && item.type == 1}}" hover-class="none" url="../case_deatils/casedea?_id={{item.product_id}}">
+        <navigator wx:elif="{{item.link_type == 1 && item.type == 0}}" hover-class="none" url="../prodea/prodea?_id={{item.product_id}}">
           <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
-        <navigator wx:elif="{{item.position == 0 && item.type == 2}}" hover-class="none" url="../designer_dea/designer_dea?_id={{item.product_id}}">
+
+        <!-- 案例 -->
+        <navigator wx:elif="{{item.link_type == 0 && item.type == 1}}" hover-class="none" url="../case_list/case_list">
           <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
-        <navigator wx:if="{{item.position == 1}}" hover-class="none" url="../goods_list/goodslist?typeId={{item.style_id}}&type=style">
-          <image lazy-load="true" bindload="setConHeight2" mode="widthFix" src='{{item.cover}}'></image>
+        <navigator wx:elif="{{item.link_type == 1 && item.type == 1}}" hover-class="none" url="../case_deatils/casedea?_id={{item.product_id}}">
+          <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
+        </navigator>
+
+        <!-- 设计师 -->
+        <navigator wx:elif="{{item.link_type == 0 && item.type == 2}}" hover-class="none" url="../designer_list/designerlist">
+          <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
+        </navigator>
+        <navigator wx:elif="{{item.link_type == 1 && item.type == 2}}" hover-class="none" url="../designer_dea/designer_dea?_id={{item.product_id}}">
+          <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
       </swiper-item>
     </block>
@@ -35,18 +46,29 @@
 <!-- 轮播2 -->
 <view class='banner2' style="height:{{height2}}px">
   <swiper autoplay="true" circular="true" bindchange="swiperChange2" >
-    <block wx:for="{{bannerData2}}" wx:key>
+    <block wx:for="{{bannerData2}}" wx:key="item">
       <swiper-item>
-        <navigator wx:if="{{item.position == 0 && item.type == 0}}" hover-class="none" url="../prodea/prodea?_id={{item.product_id}}">
-          <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
+        <!-- 商品 -->
+        <navigator wx:if="{{item.link_type == 0 && item.type == 0}}" hover-class="none" url="../goods_list/goodslist?typeId={{item.style_id}}&type=style">
+          <image lazy-load="true" bindload="setConHeight2" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
-        <navigator wx:elif="{{item.position == 0 && item.type == 1}}" hover-class="none" url="../case_deatils/casedea?_id={{item.product_id}}">
-          <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
+        <navigator wx:elif="{{item.link_type == 1 && item.type == 0}}" hover-class="none" url="../prodea/prodea?_id={{item.product_id}}">
+          <image lazy-load="true" bindload="setConHeight2" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
-        <navigator wx:elif="{{item.position == 0 && item.type == 2}}" hover-class="none" url="../designer_dea/designer_dea?_id={{item.product_id}}">
-          <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
+
+        <!-- 案例 -->
+        <navigator wx:elif="{{item.link_type == 0 && item.type == 1}}" hover-class="none" url="../case_list/case_list">
+          <image lazy-load="true" bindload="setConHeight2" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
-        <navigator wx:if="{{item.position == 1}}" hover-class="none" url="../goods_list/goodslist?typeId={{item.style_id}}&type=style">
+        <navigator wx:elif="{{item.link_type == 1 && item.type == 1}}" hover-class="none" url="../case_deatils/casedea?_id={{item.product_id}}">
+          <image lazy-load="true" bindload="setConHeight2" mode="widthFix" src='{{item.cover}}'></image>
+        </navigator>
+
+        <!-- 设计师 -->
+        <navigator wx:elif="{{item.link_type == 0 && item.type == 2}}" hover-class="none" url="../designer_list/designerlist">
+          <image lazy-load="true" bindload="setConHeight2" mode="widthFix" src='{{item.cover}}'></image>
+        </navigator>
+        <navigator wx:elif="{{item.link_type == 1 && item.type == 2}}" hover-class="none" url="../designer_dea/designer_dea?_id={{item.product_id}}">
           <image lazy-load="true" bindload="setConHeight2" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
       </swiper-item>

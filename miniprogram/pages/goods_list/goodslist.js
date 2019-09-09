@@ -25,8 +25,9 @@ Page({
    */
   onLoad: function (options) {
     // 获取商品列表
-    this.data.type = options.type
-    this.data.typeId = options.typeId
+    // this.data.type = options.type
+    // this.data.typeId = options.typeId
+    this.setData({ type: options.type, typeId: options.typeId })
 
     var filter = { title: options.title, page: 1 }
     if (this.data.type === 'style') {
@@ -34,7 +35,8 @@ Page({
     } else {
       filter['category_id'] = this.data.typeId
     }
-    this.data.filter = filter
+    this.setData({ filter: filter })
+    // this.data.filter = filter
 
     this.getGoodsList()
     this.getSpList()
@@ -180,7 +182,7 @@ Page({
   },
   onFilterChange(e) {
     const id = e.currentTarget.dataset.id
-    var filter = {}
+    var filter = { title: this.data.filter.title }
     var type = e.currentTarget.dataset.type
     
     if (this.data.type) {
