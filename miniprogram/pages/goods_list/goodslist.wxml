@@ -3,7 +3,7 @@
 <!-- 缺省页面 -->
 <!-- 搜索 -->
 <view class="search">
-  <navigator wx:if="{{type === 'style'}}" hover-class="none" url="../../pages/search/search?type=goods&style_id={{typeId}}">
+  <navigator wx:if="{{type === 'style'}}" hover-class="none" url="../../pages/search/search?type=goods&style_id={{filter.style_id}}">
     搜索商品
     <image src="../../images/icon/sea.png"></image>  
   </navigator>
@@ -50,29 +50,6 @@
 <view class="page_numcon">
   <view wx:for="{{pageArray}}" wx:key="item" hover-class="none" class="{{item==page?'sel':''}}" data-page="{{item}}" bindtap="onClickPage">{{item}}</view>
 </view>
-
-<!-- <view class="page_numcon">
-  <block wx:if="{{totalPage <= 5}}">
-    <navigator  wx:for="{{totalPage}}" wx:key="item" hover-class="none">{{item+1}}</navigator>
-  </block>
-  <block wx:elif="{{page <= 3}}">
-    <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{item+1}}</navigator>
-    <text>...</text>
-    <navigator hover-class="none">{{totalPage}}</navigator>
-  </block>
-  <block wx:elif="{{totalPage - page >= 3}}">
-    <navigator hover-class="none">1</navigator>
-    <text>...</text>
-    <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{page+item-1}}</navigator>
-    <text>...</text>
-    <navigator hover-class="none">{{totalPage}}</navigator>
-  </block>
-  <block wx:else>
-    <navigator hover-class="none">1</navigator>
-    <text>...</text>
-    <navigator wx:for="{{3}}" wx:key="item" hover-class="none">{{totalPage+item-2}}</navigator>
-  </block>
-</view> -->
 
 <!-- 底部菜单 -->
 <import src="../templates/tabBar.wxml"/>

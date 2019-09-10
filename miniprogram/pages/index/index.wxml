@@ -34,6 +34,11 @@
         <navigator wx:elif="{{item.link_type == 1 && item.type == 2}}" hover-class="none" url="../designer_dea/designer_dea?_id={{item.product_id}}">
           <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
         </navigator>
+
+        <!-- 静态页 -->
+        <view wx:elif="{{item.link_type == 2}}">
+          <image lazy-load="true" bindload="setConHeight" mode="widthFix" src='{{item.cover}}'></image>
+        </view>
       </swiper-item>
     </block>
   </swiper>

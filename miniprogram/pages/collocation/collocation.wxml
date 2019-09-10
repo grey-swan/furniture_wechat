@@ -27,7 +27,7 @@
 </view>
 
 <!-- 底部悬浮 -->
-<view class="coll_fix">
+<view wx:if="{{cartItmes.length > 0}}" class="coll_fix">
   <view class="coll_all {{isAll?'sel':''}}" bindtap="onClickAll">全选</view>
   <view class="collfix_rcon">
     <view class="collfix_a" bindtap="onClickPopOpen" data-item="0" data-val="免费全屋软装搭配">免费全屋软装搭配</view>

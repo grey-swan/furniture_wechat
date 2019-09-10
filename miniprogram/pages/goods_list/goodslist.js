@@ -25,18 +25,19 @@ Page({
    */
   onLoad: function (options) {
     // 获取商品列表
-    // this.data.type = options.type
-    // this.data.typeId = options.typeId
-    this.setData({ type: options.type, typeId: options.typeId })
+    // type为style或category
+    // typeId为style_id或category_id
+    const type = options.type
+    const typeId = options.typeId
+    this.setData({ type: type, typeId: typeId })
 
     var filter = { title: options.title, page: 1 }
-    if (this.data.type === 'style') {
-      filter['style_id'] = this.data.typeId
+    if (type == 'style') {
+      filter['style_id'] = typeId
     } else {
-      filter['category_id'] = this.data.typeId
+      filter['category_id'] = typeId
     }
     this.setData({ filter: filter })
-    // this.data.filter = filter
 
     this.getGoodsList()
     this.getSpList()
@@ -185,16 +186,18 @@ Page({
     var filter = { title: this.data.filter.title }
     var type = e.currentTarget.dataset.type
     
-    if (this.data.type) {
-      filter['category_id'] = id
+    if (this.data.type == 'style') {
+      // 从当前风格中筛选物品
+      this.setData({ 'filter.category_id': id })
     } else {
       if (type == 'pt') {
-        filter['style_id'] = id
+        // 从当前物品类中筛选风格
+        this.setData({ 'filter.style_id': id })
       } else {
-        filter['category_id'] = id
+        // 因为饰品没有风格，所以
+        this.setData({ 'filter.category_id': id })
       }
     }
-    this.data.filter = filter
 
     this.setData({ typeId: id })
     this.getGoodsList()
