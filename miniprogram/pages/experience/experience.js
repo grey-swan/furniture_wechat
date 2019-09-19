@@ -5,7 +5,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    // 得胜
+    latitudeDs: 25.055060,
+    longitudeDs: 102.745150,
+    markersDs: [{
+      iconPath: '../../images/icon/markers.svg',
+      latitude: 25.055060,
+      longitude: 102.745150,
+      name: '华韵亿美'
+    }],
+    // 红星
+    latitudeHx: 24.994446,
+    longitudeHx: 102.683608,
+    markersHx: [{
+      iconPath: '../../images/icon/markers.svg',
+      latitude: 24.994446,
+      longitude: 102.683608,
+      name: '华韵亿美'
+    }],
+    covers: [],
+    polygons: [],
+    enable3d: false,
+    showCompass: true,
+    enableOverlooking: false,
+    enableZoom: true,
+    enableScroll: true,
+    enableRotate: false,
+    drawPolygon: false,
+    enableSatellite: false,
+    enableTraffic: false
   },
 
   /**

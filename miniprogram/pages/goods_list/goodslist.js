@@ -183,19 +183,18 @@ Page({
   },
   onFilterChange(e) {
     const id = e.currentTarget.dataset.id
-    var filter = { title: this.data.filter.title }
     var type = e.currentTarget.dataset.type
     
     if (this.data.type == 'style') {
       // 从当前风格中筛选物品
-      this.setData({ 'filter.category_id': id })
+      this.setData({ page: 1, 'filter.page': 1, 'filter.category_id': id })
     } else {
       if (type == 'pt') {
         // 从当前物品类中筛选风格
-        this.setData({ 'filter.style_id': id })
+        this.setData({ page: 1, 'filter.page': 1, 'filter.style_id': id })
       } else {
         // 因为饰品没有风格，所以
-        this.setData({ 'filter.category_id': id })
+        this.setData({ page: 1, 'filter.page': 1, 'filter.category_id': id })
       }
     }
 

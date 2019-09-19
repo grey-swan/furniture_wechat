@@ -120,12 +120,12 @@
   <!-- 图片列表 -->
   <view class="index_list">
     <navigator hover-class="none" url="../case_list/case_list">
-      <image mode="widthFix" src="http://hyym.oocpo.com/8b48f668c59411e98ad35254008e9dc2.jpg"></image>
+      <image mode="widthFix" src="http://hyym.oocpo.com/2a61941ad92911e98ad35254008e9dc2.jpg"></image>
     </navigator>
   </view>
   <view class="index_list">
     <navigator hover-class="none" url="../about/about">
-      <image mode="widthFix" src="../../images/icon/mapimg.jpg"></image>
+      <image mode="widthFix" src="http://hyym.oocpo.com/f3433a06d92811e98ad35254008e9dc2.jpg"></image>
     </navigator>
   </view>
   <view class="h30"></view>

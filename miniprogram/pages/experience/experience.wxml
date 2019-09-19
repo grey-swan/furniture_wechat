@@ -1,22 +1,60 @@
 <!--pages/experience/experience.wxml-->
 <view class="ctc_con">
-  <view class="map"><image src="../../images/icon/map.jpg" mode="widthFix"></image></view>
+  <!-- <view class="map"><image src="../../images/icon/map.jpg" mode="widthFix"></image></view> -->
+  <view class="map">
+    <map
+      style="width: 100%; height: 300px;"
+      latitude="{{latitudeDs}}"
+      longitude="{{longitudeDs}}"
+      scale="{{18}}"
+      markers="{{markersDs}}"
+      covers="{{covers}}"
+      enable-3D="{{enable3d}}"
+      show-compass="{{showCompass}}"
+      enable-zoom="{{enableZoom}}"
+      enable-rotate="{{enableRotate}}"
+      enable-satellite="{{enableSatellite}}"
+      enable-traffic="{{enableTraffic}}"
+      enable-overlooking="{{enableOverlooking}}"
+      enable-scroll="{{enableScroll}}"
+      polygons="{{drawPolygon ? polygons : []}}"
+    >
+    </map>
+  </view>
   <view class="ctc_name">华韵亿美世博店</view>
-  <view class="ctc_arr">地址：白龙路与东二环交汇处(石闸立交桥旁)</view>
-  <view class="ctc_arr">电话：0871-88888888</view>
-  <view class="ctc_font">温馨提示：可体验北欧式风格、美式风格、法式风格、简约轻奢
-浪漫温馨等个性化风格！</view>
-  <view class="map mt74"><image src="../../images/icon/map.jpg" mode="widthFix"></image></view>
-  <view class="ctc_name">华韵亿美世博店</view>
-  <view class="ctc_arr">地址：白龙路与东二环交汇处(石闸立交桥旁)</view>
-  <view class="ctc_arr">电话：0871-88888888</view>
-  <view class="ctc_font">温馨提示：可体验北欧式风格、美式风格、法式风格、简约轻奢
-浪漫温馨等个性化风格！</view>
+  <view class="ctc_arr">白龙路与东二环交汇处(石闸立交桥旁)得胜世博店1楼</view>
+  <view class="ctc_arr">电话：13700649131</view>
+  <view class="ctc_font">温馨提示：可体验现代风格、轻奢风格、美式风格、极简风格、传统中式风格、新中式风格等个性风格！</view>
+  <!-- <view class="map mt74"><image src="../../images/icon/map.jpg" mode="widthFix"></image></view> -->
+  <view class="map mt74">
+    <map
+      style="width: 100%; height: 300px;"
+      latitude="{{latitudeHx}}"
+      longitude="{{longitudeHx}}"
+      scale="{{18}}"
+      markers="{{markersHx}}"
+      covers="{{covers}}"
+      enable-3D="{{enable3d}}"
+      show-compass="{{showCompass}}"
+      enable-zoom="{{enableZoom}}"
+      enable-rotate="{{enableRotate}}"
+      enable-satellite="{{enableSatellite}}"
+      enable-traffic="{{enableTraffic}}"
+      enable-overlooking="{{enableOverlooking}}"
+      enable-scroll="{{enableScroll}}"
+      polygons="{{drawPolygon ? polygons : []}}"
+    >
+    </map>
+  </view>
+  <view class="ctc_name">华韵亿美红星美凯龙店</view>
+  <view class="ctc_arr">地址：红星美凯龙广福路店5楼F5E8119号兴叶家具生活体验馆</view>
+  <view class="ctc_arr">电话：13700643739</view>
+  <view class="ctc_font">温馨提示：可体验传统中式风格、新中式风格！</view>
   <view class="index_list mt74">
     <navigator hover-class="none" url="../about/about">
-      <image mode="widthFix" src="../../images/icon/mapimg.jpg"></image>
+      <image mode="widthFix" src="http://hyym.oocpo.com/f3433a06d92811e98ad35254008e9dc2.jpg"></image>
     </navigator>
-  </view> 
+  </view>
 </view>
 
 
