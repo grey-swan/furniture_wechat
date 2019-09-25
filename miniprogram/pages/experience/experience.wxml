@@ -3,7 +3,7 @@
   <!-- <view class="map"><image src="../../images/icon/map.jpg" mode="widthFix"></image></view> -->
   <view class="map">
     <map
-      style="width: 100%; height: 300px;"
+      style="width: 100%; height: 400rpx;"
       latitude="{{latitudeDs}}"
       longitude="{{longitudeDs}}"
       scale="{{18}}"
@@ -28,7 +28,7 @@
   <!-- <view class="map mt74"><image src="../../images/icon/map.jpg" mode="widthFix"></image></view> -->
   <view class="map mt74">
     <map
-      style="width: 100%; height: 300px;"
+      style="width: 100%; height: 400rpx;"
       latitude="{{latitudeHx}}"
       longitude="{{longitudeHx}}"
       scale="{{18}}"
