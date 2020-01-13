@@ -11,14 +11,15 @@ Page({
     caseItems: [],
     page: 1,  // 当前页码
     totalPage: 1, // 总页码
-    pageArray: [] // 分页列表
+    pageArray: [], // 分页列表
+    bannerUrl: "http://hyym.oocpo.com/1a98a850c59411e98ad35254008e9dc2.jpg?ran=" + Math.random()
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.filter = { page: 1, title: options.title }
+    this.data.filter = { page: 1, pageSize: 10, title: options.title, sort_order: 'order__desc' }
     this.getCaseList()
   },
 

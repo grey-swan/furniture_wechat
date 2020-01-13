@@ -15,7 +15,10 @@ Page({
     height:0,
     height2: 0,
     userInfo: {},
-    hasUserInfo: true
+    hasUserInfo: true,
+    colldeaUrl: "http://hyym.oocpo.com/72461fcec59411e98ad35254008e9dc2.jpg?ran=" + Math.random(),
+    caseUrl: "http://hyym.oocpo.com/2a61941ad92911e98ad35254008e9dc2.jpg?ran=" + Math.random(),
+    aboutUrl: "http://hyym.oocpo.com/f3433a06d92811e98ad35254008e9dc2.jpg?ran=" + Math.random()
   },
   onLoad: function () {
     app.authForbidCallBack = res => {

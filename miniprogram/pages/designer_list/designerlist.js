@@ -11,7 +11,8 @@ Page({
     designerItems: [],
     page: 1,  // 当前页码
     totalPage: 1, // 总页码
-    pageArray: [] // 分页列表
+    pageArray: [], // 分页列表
+    bannerUrl: "http://hyym.oocpo.com/3c724dfac59411e98ad35254008e9dc2.jpg?ran=" + Math.random()
   },
 
   /**

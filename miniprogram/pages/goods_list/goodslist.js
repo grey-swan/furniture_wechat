@@ -17,7 +17,8 @@ Page({
     pageArray: [], // 分页列表
     goodsItmes: [],
     ptItems: [],  // 普通分类
-    spItems: []  // 饰品分类
+    spItems: [],  // 饰品分类
+    bannerUrl: "http://hyym.oocpo.com/5909d384c59411e98ad35254008e9dc2.jpg?ran=" + Math.random()
   },
 
   /**
@@ -31,7 +32,7 @@ Page({
     const typeId = options.typeId
     this.setData({ type: type, typeId: typeId })
 
-    var filter = { title: options.title, page: 1 }
+    var filter = { title: options.title, page: 1, sort_order: 'order__desc' }
     if (type == 'style') {
       filter['style_id'] = typeId
     } else {
