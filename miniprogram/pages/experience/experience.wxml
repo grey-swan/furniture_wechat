@@ -52,7 +52,7 @@
   <view class="ctc_font">温馨提示：可体验传统中式风格、新中式风格！</view>
   <view class="index_list mt74">
     <navigator hover-class="none" url="../about/about">
-      <image mode="widthFix" src="http://hyym.oocpo.com/f3433a06d92811e98ad35254008e9dc2.jpg"></image>
+      <image mode="widthFix" src="{{aboutUrl}}"></image>
     </navigator>
   </view>
 </view>

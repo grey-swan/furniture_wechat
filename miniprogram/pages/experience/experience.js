@@ -33,7 +33,8 @@ Page({
     enableRotate: false,
     drawPolygon: false,
     enableSatellite: false,
-    enableTraffic: false
+    enableTraffic: false,
+    aboutUrl: "http://hyym.oocpo.com/f3433a06d92811e98ad35254008e9dc2.jpg?ran=" + Math.random()
   },
 
   /**

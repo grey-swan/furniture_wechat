@@ -88,7 +88,7 @@
 <!--软件服务优势  -->
 <view class="inx_serive">
   <navigator hover-class="none" url="../colldea/colldea">
-    <image lazy-load="true" mode="widthFix" src="http://hyym.oocpo.com/72461fcec59411e98ad35254008e9dc2.jpg"></image>
+    <image lazy-load="true" mode="widthFix" src="{{colldeaUrl}}"></image>
   </navigator>
 </view>
 <!-- 金牌设计师 -->
@@ -120,12 +120,12 @@
   <!-- 图片列表 -->
   <view class="index_list">
     <navigator hover-class="none" url="../case_list/case_list">
-      <image mode="widthFix" src="http://hyym.oocpo.com/2a61941ad92911e98ad35254008e9dc2.jpg"></image>
+      <image mode="widthFix" src="{{caseUrl}}"></image>
     </navigator>
   </view>
   <view class="index_list">
     <navigator hover-class="none" url="../about/about">
-      <image mode="widthFix" src="http://hyym.oocpo.com/f3433a06d92811e98ad35254008e9dc2.jpg"></image>
+      <image mode="widthFix" src="{{aboutUrl}}"></image>
     </navigator>
   </view>
   <view class="h30"></view>
